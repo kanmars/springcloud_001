@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>欢迎使用SN-generator&nbsp;Web工具</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="/common/js/jquery-1.7.1.min.js"></script>
+    <script src="/common/js/jquery.base64.js"></script>
+</head>
+<body>
+<br>
+<br>
+<span style="font-size: 30px;">一键分身</span>
+<br>
+<br>
+<hr>
+请输入配置信息:<br>
+请输入源路径(即原型项目文件夹的位置):<br><input id="srcDir" style="width:800px" value="E:/work/GFS_NEW_IntenlliJ/SN/branches/SN_parent_0.1.0_BR"><br>
+<br>
+输入目标路径(即新项目文件夹的位置):<br><input id="dstDir" style="width:800px" value="E:/SN_parent_0.1.0_BR"><br>
+<br><br>
+请输入替换字段的列表，每行为一条记录，逗号左侧为被替换的字符串，逗号右侧为要替换成的字符串<br>
+<textarea id="replaceList" style="width:800px;height:200px;">
+SN,FGATE
+Sn,Fgate
+sn,fgate
+神农后台管理系统,金融系统统一网关
+神农,金融
+20901,20901
+20902,20902
+20903,20903
+20904,20904
+20905,20905
+20880,20880
+</textarea><br><br><br>
+<input id="CCC" type="button" onclick="buildFiles()" value="点击生成"/>
+<br><br><br>
+<span>
+使用说明:<br>
+一键分身功能为神农系统的招牌功能，通过设置替换列表，则源文件夹中的所有的文件中“类似项目标识”的字符串均会替换掉<br>
+例如:<br>
+SN,FGATE这个配置，将会把SN_parent中的SN全部替换掉，而SNAPSHOT中的SN不会替换掉<br>
+技术大致原理是：关键词左侧为非字符(大于小于回车换行等)且右侧为非字符(大于小于回车换行等)，则需要替换掉<br>
+<br>
+通过此功能，我们可以做到分身：<br>
+1、迅速新建一个新项目并立即开始<br>
+2、将已经分身出去的项目通过反向操作合并回来<br>
+就可以实现通过一个系统，幻化出N多完全系统，如果新系统有好的修改，则通过分身工作可以把分身收回来，保持神农系统的继续进化。
+
+
+</span>
+
+<script>
+    function buildFiles(){
+        if(!confirm("目标路径必须不存在，否则会生成失败。是否确定生成(此操作需要较长一段时间)!")){
+            return;
+        }
+        var srcDir = $("#srcDir").val();
+        var dstDir = $("#dstDir").val();
+        var replaceList = $("#replaceList").val();
+
+        srcDir = $.base64.encode(encodeURI(srcDir));
+        dstDir = $.base64.encode(encodeURI(dstDir));
+        replaceList = $.base64.encode(encodeURI(replaceList));
+
+        var buildurl ="/mover"
+                +"?srcDir="+srcDir
+                +"&dstDir="+dstDir
+                +"&replaceList="+replaceList
+        $.ajax({
+            url: buildurl,
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if(data.resCode=="0000"){
+                    alert("成功");
+                }else{
+                    alert("生成失败，错误原因如下:"+data.resDesc)
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

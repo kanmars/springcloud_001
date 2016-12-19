@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.sn.dao.TblSysroleInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.sn.entity.TblSysroleInfo">
+        <constructor>
+            <idArg column="role_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="role_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="application_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_opr_no" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_opr_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="role_oth_msg" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="up_time" javaType="java.lang.String" jdbcType="CHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        role_no,role_name,application_code,create_opr_no,create_opr_name,role_oth_msg,create_time,up_time
+    </sql>
+    <select id="select" parameterType="cn.kanmars.sn.entity.TblSysroleInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sysrole_info
+        where 1=1
+        <if test="roleNo != null and roleNo != '' ">
+            and role_no = #{roleNo,jdbcType=VARCHAR}
+        </if>
+        <if test="roleName != null and roleName != '' ">
+            and role_name = #{roleName,jdbcType=VARCHAR}
+        </if>
+        <if test="applicationCode != null and applicationCode != '' ">
+            and application_code = #{applicationCode,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprNo != null and createOprNo != '' ">
+            and create_opr_no = #{createOprNo,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprName != null and createOprName != '' ">
+            and create_opr_name = #{createOprName,jdbcType=VARCHAR}
+        </if>
+        <if test="roleOthMsg != null and roleOthMsg != '' ">
+            and role_oth_msg = #{roleOthMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.sn.entity.TblSysroleInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sysrole_info
+        where 1=1
+        <if test="roleNo != null and roleNo != '' ">
+            and role_no = #{roleNo,jdbcType=VARCHAR}
+        </if>
+        <if test="roleName != null and roleName != '' ">
+            and role_name = #{roleName,jdbcType=VARCHAR}
+        </if>
+        <if test="applicationCode != null and applicationCode != '' ">
+            and application_code = #{applicationCode,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprNo != null and createOprNo != '' ">
+            and create_opr_no = #{createOprNo,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprName != null and createOprName != '' ">
+            and create_opr_name = #{createOprName,jdbcType=VARCHAR}
+        </if>
+        <if test="roleOthMsg != null and roleOthMsg != '' ">
+            and role_oth_msg = #{roleOthMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.sn.entity.TblSysroleInfo" >
+        insert into tbl_sysrole_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleNo != null ">
+                role_no,
+            </if>
+            <if test="roleName != null ">
+                role_name,
+            </if>
+            <if test="applicationCode != null ">
+                application_code,
+            </if>
+            <if test="createOprNo != null ">
+                create_opr_no,
+            </if>
+            <if test="createOprName != null ">
+                create_opr_name,
+            </if>
+            <if test="roleOthMsg != null ">
+                role_oth_msg,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="upTime != null ">
+                up_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleNo != null ">
+                #{roleNo,jdbcType=VARCHAR},
+            </if>
+            <if test="roleName != null ">
+                #{roleName,jdbcType=VARCHAR},
+            </if>
+            <if test="applicationCode != null ">
+                #{applicationCode,jdbcType=VARCHAR},
+            </if>
+            <if test="createOprNo != null ">
+                #{createOprNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createOprName != null ">
+                #{createOprName,jdbcType=VARCHAR},
+            </if>
+            <if test="roleOthMsg != null ">
+                #{roleOthMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="upTime != null ">
+                #{upTime,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.sn.entity.TblSysroleInfo" >
+        update tbl_sysrole_info
+        <set>
+            <if test="roleName != null">
+                role_name = #{roleName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="applicationCode != null">
+                application_code = #{applicationCode,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createOprNo != null">
+                create_opr_no = #{createOprNo,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createOprName != null">
+                create_opr_name = #{createOprName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="roleOthMsg != null">
+                role_oth_msg = #{roleOthMsg,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime != null">
+                up_time = #{upTime,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and role_no = #{roleNo,jdbcType=VARCHAR}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.sn.entity.TblSysroleInfo" >
+        delete from tbl_sysrole_info
+        where 1=1
+            <if test="roleNo != null and roleNo != '' ">
+                and role_no = #{roleNo,jdbcType=VARCHAR}
+            </if>
+            <if test="roleName != null and roleName != '' ">
+                and role_name = #{roleName,jdbcType=VARCHAR}
+            </if>
+            <if test="applicationCode != null and applicationCode != '' ">
+                and application_code = #{applicationCode,jdbcType=VARCHAR}
+            </if>
+            <if test="createOprNo != null and createOprNo != '' ">
+                and create_opr_no = #{createOprNo,jdbcType=VARCHAR}
+            </if>
+            <if test="createOprName != null and createOprName != '' ">
+                and create_opr_name = #{createOprName,jdbcType=VARCHAR}
+            </if>
+            <if test="roleOthMsg != null and roleOthMsg != '' ">
+                and role_oth_msg = #{roleOthMsg,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null and upTime != '' ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sysrole_info
+        where 1=1
+        <if test="roleNo != null and roleNo != '' ">
+            and role_no = #{roleNo,jdbcType=VARCHAR}
+        </if>
+        <if test="roleName != null and roleName != '' ">
+            and role_name = #{roleName,jdbcType=VARCHAR}
+        </if>
+        <if test="applicationCode != null and applicationCode != '' ">
+            and application_code = #{applicationCode,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprNo != null and createOprNo != '' ">
+            and create_opr_no = #{createOprNo,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprName != null and createOprName != '' ">
+            and create_opr_name = #{createOprName,jdbcType=VARCHAR}
+        </if>
+        <if test="roleOthMsg != null and roleOthMsg != '' ">
+            and role_oth_msg = #{roleOthMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sysrole_info
+        where 1=1
+        <if test="roleNo != null and roleNo != '' ">
+            and role_no = #{roleNo,jdbcType=VARCHAR}
+        </if>
+        <if test="roleName != null and roleName != '' ">
+            and role_name = #{roleName,jdbcType=VARCHAR}
+        </if>
+        <if test="applicationCode != null and applicationCode != '' ">
+            and application_code = #{applicationCode,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprNo != null and createOprNo != '' ">
+            and create_opr_no = #{createOprNo,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprName != null and createOprName != '' ">
+            and create_opr_name = #{createOprName,jdbcType=VARCHAR}
+        </if>
+        <if test="roleOthMsg != null and roleOthMsg != '' ">
+            and role_oth_msg = #{roleOthMsg,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_sysrole_info
+        <set>
+            <if test="roleName_new != null">
+                role_name = #{roleName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="applicationCode_new != null">
+                application_code = #{applicationCode_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createOprNo_new != null">
+                create_opr_no = #{createOprNo_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createOprName_new != null">
+                create_opr_name = #{createOprName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="roleOthMsg_new != null">
+                role_oth_msg = #{roleOthMsg_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime_new != null">
+                up_time = #{upTime_new,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="roleNo != null ">
+                and role_no = #{roleNo,jdbcType=VARCHAR}
+            </if>
+            <if test="roleName != null ">
+                and role_name = #{roleName,jdbcType=VARCHAR}
+            </if>
+            <if test="applicationCode != null ">
+                and application_code = #{applicationCode,jdbcType=VARCHAR}
+            </if>
+            <if test="createOprNo != null ">
+                and create_opr_no = #{createOprNo,jdbcType=VARCHAR}
+            </if>
+            <if test="createOprName != null ">
+                and create_opr_name = #{createOprName,jdbcType=VARCHAR}
+            </if>
+            <if test="roleOthMsg != null ">
+                and role_oth_msg = #{roleOthMsg,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sysrole_info
+        where 1=1
+        <if test="roleNo != null and roleNo != '' ">
+            and role_no like CONCAT(#{roleNo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="roleName != null and roleName != '' ">
+            and role_name like CONCAT(#{roleName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="applicationCode != null and applicationCode != '' ">
+            and application_code = #{applicationCode,jdbcType=VARCHAR}
+        </if>
+        <if test="createOprNo != null and createOprNo != '' ">
+            and create_opr_no like CONCAT(#{createOprNo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createOprName != null and createOprName != '' ">
+            and create_opr_name like CONCAT(#{createOprName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="roleOthMsg != null and roleOthMsg != '' ">
+            and role_oth_msg like CONCAT(#{roleOthMsg,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_sysrole_info (role_no,role_name,application_code,create_opr_no,create_opr_name,role_oth_msg,create_time,up_time) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.roleNo},#{item.roleName},#{item.applicationCode},#{item.createOprNo},#{item.createOprName},#{item.roleOthMsg},#{item.createTime},#{item.upTime}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_sysrole_info
+            <set>
+                <if test="item.roleName_new != null">
+                    role_name = #{item.roleName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.applicationCode_new != null">
+                    application_code = #{item.applicationCode_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createOprNo_new != null">
+                    create_opr_no = #{item.createOprNo_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createOprName_new != null">
+                    create_opr_name = #{item.createOprName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.roleOthMsg_new != null">
+                    role_oth_msg = #{item.roleOthMsg_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.upTime_new != null">
+                    up_time = #{item.upTime_new,jdbcType=CHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.roleNo != null ">
+                    and role_no = #{item.roleNo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.roleName != null ">
+                    and role_name = #{item.roleName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.applicationCode != null ">
+                    and application_code = #{item.applicationCode,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createOprNo != null ">
+                    and create_opr_no = #{item.createOprNo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createOprName != null ">
+                    and create_opr_name = #{item.createOprName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.roleOthMsg != null ">
+                    and role_oth_msg = #{item.roleOthMsg,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=CHAR}
+                </if>
+                <if test="item.upTime != null ">
+                    and up_time = #{item.upTime,jdbcType=CHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sysrole_info
+        where 1=1
+        and role_no = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

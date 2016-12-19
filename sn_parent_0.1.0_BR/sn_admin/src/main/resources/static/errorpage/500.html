@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>服务器出现异常，请联系管理员！</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<style type=text/css>
+	.font14 {
+				font-size:14px;
+			}
+	.font12 {
+				font-size:12px;
+			}
+	.font12 a{
+				font-size:12px;
+				color:#cc0000;
+				text-decoration:none;
+			}
+</style>
+  </head>
+  <body>
+    <table height="500" cellspacing="0" cellpadding="0" width="500px" align="center" background="images/500_error.gif" border="0">
+	  <tbody>
+		  <tr>
+		    <td height="330px">　</td></tr>
+		  <tr>
+		    <td valign="top">
+		      <div class="font14" align="center">
+		      	<strong><font color="#ff0000">服务器出现异常，请联系管理员！在<span id="counttime"></span>秒后跳转到主页面</font></strong>
+				  <script>
+					  var counttime = 3;
+					  function showTimeAndJump(time){
+						  document.getElementById("counttime").innerHTML = time;
+						  if(time==0){
+							  window.location.href="/";
+						  }else{
+							  setTimeout("showTimeAndJump("+(time-1)+")",1000);
+						  }
+					  }
+					  showTimeAndJump(counttime)
+				  </script>
+			  </div>
+			</td>
+		   </tr>
+	  </tbody>
+  </table>
+  </body>
+</html>

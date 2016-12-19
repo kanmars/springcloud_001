@@ -1,0 +1,486 @@
+<html>
+<head>
+    <title>选择页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="/common/js/jquery-1.7.1.min.js"></script>
+    <script src="/common/js/jquery.base64.js"></script>
+</head>
+<body>
+请输入数据库信息:<br>
+    <textarea id="dbDriverInfo" style="width:1000px;height:170px;">
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  MYSQL
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+sn.jdbc.dbtype=MYSQL
+sn.jdbc.driverClass=com.mysql.jdbc.Driver
+sn.jdbc.url=jdbc:mysql://10.126.53.197:3306/sn_main?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+sn.jdbc.schema=sn_main
+sn.jdbc.username=snuat
+sn.jdbc.password=123456
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  ORACLE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//sn.jdbc.dbtype=ORACLE
+//sn.jdbc.driverClass=oracle.jdbc.driver.OracleDriver
+//sn.jdbc.url=jdbc:oracle:thin:@10.126.53.197:1521:finance
+//sn.jdbc.schema=billuat
+//sn.jdbc.username=billuat
+//sn.jdbc.password=billuat
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  SQLITE
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//sn.jdbc.dbtype=SQLITE
+//sn.jdbc.driverClass=org.sqlite.JDBC
+//sn.jdbc.url=jdbc:sqlite:D:/sqlite.sn.db3
+//sn.jdbc.username=
+//sn.jdbc.schema=
+//sn.jdbc.password=
+    </textarea><br>
+<br>
+请输入基础路径(即SN-parent文件夹的位置):<br><input id="basePath" style="width:800px" value="E:/work/GFS_NEW_IntenlliJ/SN/branches/SN_parent_0.1.0_BR"><br>
+<br>
+请输入表名:<br><input id="tableName" style="width:800px" value="tbl_demo_info"><br>
+中文表名称:<br><input id="tableComment" style="width:800px" value="DEMO表"><br>
+<br>
+<input type="button" onclick="selectTableInfo()" value="点击查询"/><br>
+<br>
+
+选择要生成的文件:
+<input type="checkbox" id="cb_0" class="checkbox_gp0" checked="checked"/>ALL&nbsp;&nbsp;
+<input type="checkbox" id="cb_1" class="checkbox_gp0" checked="checked"/>Entity
+<input type="checkbox" id="cb_2" class="checkbox_gp0" checked="checked"/>Dao
+<input type="checkbox" id="cb_3" class="checkbox_gp0" checked="checked"/>Mapper
+<input type="checkbox" id="cb_4" class="checkbox_gp0" checked="checked"/>Logic
+<input type="checkbox" id="cb_5" class="checkbox_gp0" checked="checked"/>Controller
+<input type="checkbox" id="cb_6" class="checkbox_gp0" checked="checked"/>Ftl
+<input type="checkbox" id="cb_7" class="checkbox_gp0" checked="checked"/>JS
+<input type="button" onclick="buildFiles(true)" value="点击生成"/>
+<input type="button" onclick="saveFiles()" value="储存配置"/>
+<script>
+    function selectTableInfo(){
+        var basePath = $("#basePath").val();
+        if(basePath==""){
+            alert("请输入基础路径");
+            return;
+        }
+        var tableName = $("#tableName").val();
+        if(tableName==""){
+            alert("请输入表名");
+            return;
+        }
+        var tableComment = $("#tableComment").val();
+        if(tableComment==""){
+            alert("请输入表的中文名称");
+            return;
+        }
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        var queryurl="/generator?type=a_01_selectDBINFO&dbDriverInfo="+dbDriverInfo+"&tableName="+tableName+"&tableComment="+$.base64.encode(encodeURI($("#tableComment").val()));
+        $.ajax({
+            url:queryurl,
+            type:"GET",
+            dataType:"json",
+            success:function(data){
+                $("#tableInfo tr:gt(0)").remove();
+                for(var i in data.columnsJsonArray){
+                    var columnJSON = data.columnsJsonArray[i];
+                    var columnName = columnJSON["curr.table.column.names"];
+                    var columnNameTf = columnJSON["curr.table.column.names.tf"];
+                    var columnCommentAll = columnJSON["curr.table.column.comment.all"];
+                    var columnComment = columnJSON["curr.table.column.comment"];
+                    var columnCommentJson = columnJSON["curr.table.column.comment.json"];
+                    var columnType = columnJSON["curr.table.column.type"];
+                    var columnTypeColumnSize = columnJSON["curr.table.column.type.column.size"];
+                    var columnTypeColumnDecimalDigits = columnJSON["curr.table.column.type.column.size.decimal.digits"];
+                    var isNullAble = columnJSON["isNullAble"];
+                    if(typeof  columnTypeColumnDecimalDigits =="undefined"){
+                        columnTypeColumnDecimalDigits=0;
+                    }
+                    var content = "<tr class='tr_"+columnName+"'>" +
+                            "<td>"+columnName+"</td>" +
+                            "<td><input value='"+columnComment+"'></td>" +
+                            "<td>"+columnType+"</td>" +
+                            "<td>";
+                    content+="<select class='TYPE_SELECT' idx='"+i+"'>";
+                    content+="<option value=''>未选择</option>";
+                    var TYPES = ['input','date','datetime','radio','select','checkbox','textarea'];
+                    for(var ii in TYPES){
+                        content+="<option value='"+TYPES[ii]+"'";
+                        if(columnCommentJson.type==TYPES[ii]){
+                            content+="selected='selected'"
+                        }
+                        content+=">"+TYPES[ii]+"</option>";
+                    }
+                    content+="</select>"
+                    content+="</td>" +
+                    "<td></td>" +
+                    "<td><select id='isPrimaryKey' class='isPrimaryKey'><option value='false'"+(columnJSON.isPrimaryKey=="false"?"selected":"")+">false</option><option value='true' "+(columnJSON.isPrimaryKey=="true"?"selected":"")+">true</option></select></td>" +
+                    "<td>"+columnTypeColumnSize+"</td>" +
+                    "<td>"+columnTypeColumnDecimalDigits+"</td>" +
+                    "<td>"+isNullAble+"</td>" +
+                    "</tr>";
+                    $("#tableInfo").append(content);
+                    initDefaultAndSetValueBycolumnCommentJson(i,columnCommentJson);
+                }
+            }
+        })
+    }
+
+    function initDefaultAndSetValueBycolumnCommentJson(i,columnCommentJson){
+        $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+        if(columnCommentJson.type=="input"){
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").append(getInputModel());
+            if(columnCommentJson.attr!=undefined&&columnCommentJson.attr!=null){
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#power").val(getInfo(columnCommentJson,'columnCommentJson.attr.power'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#notEmptyMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.notEmpty.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#min").val(getInfo(columnCommentJson,'columnCommentJson.validate.stringLength.min'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#max").val(getInfo(columnCommentJson,'columnCommentJson.validate.stringLength.max'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#strLengthMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.stringLength.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#regExp").val(getInfo(columnCommentJson,'columnCommentJson.validate.regexp.regexp'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#regExpMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.regexp.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) select#isMoney").val(getInfo(columnCommentJson,'columnCommentJson.attr.isMoney'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#sequence").val(getInfo(columnCommentJson,'columnCommentJson.attr.sequence'));
+            }
+        }else if(columnCommentJson.type=="date"){
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").append(getDateModel());
+            if(columnCommentJson.attr!=undefined&&columnCommentJson.attr!=null){
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#power").val(getInfo(columnCommentJson,'columnCommentJson.attr.power'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) select#autoInsert").val(getInfo(columnCommentJson,'columnCommentJson.attr.autoinsert'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) select#autoUpdate").val(getInfo(columnCommentJson,'columnCommentJson.attr.autoupdate'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) select#queryRange").val(getInfo(columnCommentJson,'columnCommentJson.attr.queryrange'));
+            }
+        }else if(columnCommentJson.type=="datetime"){
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").append(getDatetimeModel());
+            if(columnCommentJson.attr!=undefined&&columnCommentJson.attr!=null){
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#power").val(getInfo(columnCommentJson,'columnCommentJson.attr.power'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) select#autoInsert").val(getInfo(columnCommentJson,'columnCommentJson.attr.autoinsert'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) select#autoUpdate").val(getInfo(columnCommentJson,'columnCommentJson.attr.autoupdate'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) select#queryRange").val(getInfo(columnCommentJson,'columnCommentJson.attr.queryrange'));
+            }
+        }else if(columnCommentJson.type=="radio"){
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").append(getRadioModel());
+            if(columnCommentJson.attr!=undefined&&columnCommentJson.attr!=null){
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input:eq(0)").val(columnCommentJson.attr.power);
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#notEmptyMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.notEmpty.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#options").val(getInfo(columnCommentJson,'columnCommentJson.attr.options')==""?"":JSON.stringify(getInfo(columnCommentJson,'columnCommentJson.attr.options')));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#l1Code").val(getInfo(columnCommentJson,'columnCommentJson.attr.l1Code'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#l2Code").val(getInfo(columnCommentJson,'columnCommentJson.attr.l2Code'));
+            }
+        }else if(columnCommentJson.type=="select"){
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").append(getSelectModel());
+            if(columnCommentJson.attr!=undefined&&columnCommentJson.attr!=null){
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input:eq(0)").val(columnCommentJson.attr.power);
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#notEmptyMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.notEmpty.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#options").val(getInfo(columnCommentJson,'columnCommentJson.attr.options')==""?"":JSON.stringify(getInfo(columnCommentJson,'columnCommentJson.attr.options')));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#l1Code").val(getInfo(columnCommentJson,'columnCommentJson.attr.l1Code'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#l2Code").val(getInfo(columnCommentJson,'columnCommentJson.attr.l2Code'));
+            }
+        }else if(columnCommentJson.type=="checkbox"){
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").append(getCheckboxModel());
+            if(columnCommentJson.attr!=undefined&&columnCommentJson.attr!=null){
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input:eq(0)").val(columnCommentJson.attr.power);
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#notEmptyMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.notEmpty.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#options").val(getInfo(columnCommentJson,'columnCommentJson.attr.options')==""?"":JSON.stringify(getInfo(columnCommentJson,'columnCommentJson.attr.options')));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#l1Code").val(getInfo(columnCommentJson,'columnCommentJson.attr.l1Code'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#l2Code").val(getInfo(columnCommentJson,'columnCommentJson.attr.l2Code'));
+            }
+        }else if(columnCommentJson.type=="textarea"){
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").empty();
+            $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4)").append(getTextareaModel());
+            if(columnCommentJson.attr!=undefined&&columnCommentJson.attr!=null){
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#power").val(getInfo(columnCommentJson,'columnCommentJson.attr.power'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#notEmptyMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.notEmpty.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#min").val(getInfo(columnCommentJson,'columnCommentJson.validate.stringLength.min'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#max").val(getInfo(columnCommentJson,'columnCommentJson.validate.stringLength.max'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#strLengthMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.stringLength.message'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#regExp").val(getInfo(columnCommentJson,'columnCommentJson.validate.regexp.regexp'));
+                $("#tableInfo tr:eq("+(parseInt(i)+1)+") td:eq(4) input#regExpMsg").val(getInfo(columnCommentJson,'columnCommentJson.validate.regexp.message'));
+            }
+        }
+    }
+    function getInputModel(){
+        //String power,String notEmptyMsg,int min,int max,String strLengthMsg,String regExp,String regExpMsg,boolean isMoney,String sequence
+        var str = "";
+        str +="<span class='sztitle'>权限:</span><input id='power' value='YYYYYY' class='szinput'/><br>";
+        str +="<span class='sztitle'>非空校验:</span><input id='notEmptyMsg' value='不可以为空' class='szinput'/><br>";
+        str +="<span class='sztitle'>最小长度:</span><input id='min' value='0' class='szinput'/><br>";
+        str +="<span class='sztitle'>最大长度:</span><input id='max' value='999' class='szinput'/><br>";
+        str +="<span class='sztitle'>长度不正确提示:</span><input id='strLengthMsg' value='长度不正确' class='szinput'/><br>";
+        str +="<span class='sztitle'>正则表达式:</span><input id='regExp' value='^[\\\\u4E00-\\\\u9FA5A-Za-z0-9]*$' class='szinput'/><br>";
+        str +="<span class='sztitle'>正则表达式错误提示:</span><input id='regExpMsg' value='不符合规则' class='szinput'/><br>";
+        str +="<span class='sztitle'>是否是货币:</span><select id='isMoney' class='szselect'><option value='false'>false</option><option value='true'>true</option></select><br>";
+        str +="<span class='sztitle'>序列:</span><input id='sequence' value='' class='szinput'/><br>";
+        return str;
+    }
+    function getDateModel (){
+        //String power,boolean autoInsert,boolean autoUpdate,boolean queryRange
+        var str = "";
+        str +="<span class='sztitle'>权限:</span><input id='power' value='YYYYYY' class='szinput'/><br>";
+        str +="<span class='sztitle'>自动插入:</span><select id='autoInsert' class='szselect'><option value='false'>false</option><option value='true'>true</option></select><br>";
+        str +="<span class='sztitle'>自动更新:</span><select id='autoUpdate' class='szselect'><option value='false'>false</option><option value='true'>true</option></select><br>";
+        str +="<span class='sztitle'>范围查询:</span><select id='queryRange' class='szselect'><option value='true'>true</option><option value='false'>false</option></select><br>";
+        return str;
+    }
+    function getDatetimeModel (){
+        //String power,boolean autoInsert,boolean autoUpdate,boolean queryRange
+        var str = "";
+        str +="<span class='sztitle'>权限:</span><input id='power' value='YYYYYY' class='szinput'/><br>";
+        str +="<span class='sztitle'>自动插入:</span><select id='autoInsert' class='szselect'><option value='false'>false</option><option value='true'>true</option></select><br>";
+        str +="<span class='sztitle'>自动更新:</span><select id='autoUpdate' class='szselect'><option value='false'>false</option><option value='true'>true</option></select><br>";
+        str +="<span class='sztitle'>范围查询:</span><select id='queryRange' class='szselect'><option value='true'>true</option><option value='false'>false</option></select><br>";
+        return str;
+    }
+    function getRadioModel(){
+        //String power,String notEmptyMsg,String options,String l1Code,String l2Code
+        var str = "";
+        str +="<span class='sztitle'>权限:</span><input id='power' value='YYYYYY' class='szinput'/><br>";
+        str +="<span class='sztitle'>非空校验:</span><input id='notEmptyMsg' value='不可以为空' class='szinput'/><br>";
+        str +="<span class='sztitle'>精确OPTIONS:</span><input id='options' value=\"{'010':'票据','020':'固收','030':'众筹'}\" class='szinput'/><br>";
+        str +="<span class='sztitle'>l1Code:</span><input id='l1Code' value='如果同时填写options和l1Codel2Code，则以options为准' class='szinput'/><br>";
+        str +="<span class='sztitle'>l2Code:</span><input id='l2Code' value='如果同时填写options和l1Codel2Code，则以options为准' class='szinput'/><br>";
+        return str;
+    }
+    function getSelectModel(){
+        //String power,String notEmptyMsg,String options,String l1Code,String l2Code
+        var str = "";
+        str +="<span class='sztitle'>权限:</span><input id='power' value='YYYYYY' class='szinput'/><br>";
+        str +="<span class='sztitle'>非空校验:</span><input id='notEmptyMsg' value='不可以为空' class='szinput'/><br>";
+        str +="<span class='sztitle'>精确OPTIONS:</span><input id='options' value=\"{'010':'票据','020':'固收','030':'众筹'}\" class='szinput'/><br>";
+        str +="<span class='sztitle'>l1Code:</span><input id='l1Code' value='如果同时填写options和l1Codel2Code，则以options为准' class='szinput'/><br>";
+        str +="<span class='sztitle'>l2Code:</span><input id='l2Code' value='如果同时填写options和l1Codel2Code，则以options为准' class='szinput'/><br>";
+        return str;
+    }
+    function getCheckboxModel(){
+        //String power,String notEmptyMsg,String options,String l1Code,String l2Code
+        var str = "";
+        str +="<span class='sztitle'>权限:</span><input id='power' value='YYYYYY' class='szinput'/><br>";
+        str +="<span class='sztitle'>非空校验:</span><input id='notEmptyMsg' value='不可以为空' class='szinput'/><br>";
+        str +="<span class='sztitle'>精确OPTIONS:</span><input id='options' value=\"['票据','固收','众筹']\" class='szinput'/><br>";
+        str +="<span class='sztitle'>l1Code:</span><input id='l1Code' value='如果同时填写options和l1Codel2Code，则以options为准' class='szinput'/><br>";
+        str +="<span class='sztitle'>l2Code:</span><input id='l2Code' value='如果同时填写options和l1Codel2Code，则以options为准' class='szinput'/><br>";
+        return str;
+    }
+    function getTextareaModel(){
+        //String power,String notEmptyMsg,int min,int max,String strLengthMsg,String regExp,String regExpMsg,boolean isMoney,String sequence
+        var str = "";
+        str +="<span class='sztitle'>权限:</span><input id='power' value='YYYYYY' class='szinput'/><br>";
+        str +="<span class='sztitle'>非空校验:</span><input id='notEmptyMsg' value='不可以为空' class='szinput'/><br>";
+        str +="<span class='sztitle'>最小长度:</span><input id='min' value='0' class='szinput'/><br>";
+        str +="<span class='sztitle'>最大长度:</span><input id='max' value='99999' class='szinput'/><br>";
+        str +="<span class='sztitle'>长度不正确提示:</span><input id='strLengthMsg' value='长度不正确' class='szinput'/><br>";
+        str +="<span class='sztitle'>正则表达式:</span><input id='regExp' value='^[\\\\u4E00-\\\\u9FA5A-Za-z0-9]*$' class='szinput'/><br>";
+        str +="<span class='sztitle'>正则表达式错误提示:</span><input id='regExpMsg' value='不符合规则' class='szinput'/><br>";
+        return str;
+    }
+
+
+    //工具函数，用以从columnCommentJson中获取指定路径的值
+    function getInfo(columnCommentJson,str){
+        var result = "";
+        try{
+            result = eval(str);
+        }catch (e){
+            return "";
+        }
+        return result;
+    }
+
+    $(function(){
+        //绑定切换事件
+        $(".TYPE_SELECT").live("change",function(){
+            var type = $(this).val();
+            var columnCommentJson = {};
+            columnCommentJson.type=type;
+            var idx = $(this).attr("idx");
+            initDefaultAndSetValueBycolumnCommentJson(idx,columnCommentJson);
+        });
+        //全选事件
+        $("#cb_0").change(function(){
+            var checked = $(this).prop("checked");
+            $(".checkbox_gp0").prop("checked",checked);
+        })
+    })
+
+    function saveFiles(){
+        buildFiles(false);
+    }
+
+    function buildFiles(WriteFlg){
+
+        var basePath = $("#basePath").val();
+        if(basePath==""){
+            alert("请输入基础路径");
+            return;
+        }
+        var tableName = $("#tableName").val();
+        if(tableName==""){
+            alert("请输入表名");
+            return;
+        }
+        var tableComment = $("#tableComment").val();
+        if(tableComment==""){
+            alert("请输入表的中文名称");
+            return;
+        }
+
+        if($("#tableInfo tr:gt(0)").size()<=0){
+            alert("请点击查询按钮查询数据");
+            return;
+        }
+
+
+        var allTypeSelected = true;
+        $(".TYPE_SELECT").each(function(){
+            if($(this).val()==""){
+                allTypeSelected = false;
+            }
+        });
+        if(!allTypeSelected){
+            alert("请选择类型");
+            return;
+        }
+
+        var hasPrimaryKey = false;
+        $(".isPrimaryKey").each(function(){
+            if($(this).val()=="true"){
+                hasPrimaryKey = true;
+            }
+        });
+        if(!hasPrimaryKey) {
+            alert("请选择主键");
+            return;
+        }
+
+        var dbDriverInfo = $.base64.encode($("#dbDriverInfo").val());
+        if(WriteFlg){
+            if(!confirm("是否确定生成？")){
+                return;
+            }
+            //写入模式，所有标志从页面获取
+            var buildurl="/generator?type=a_02_buildFiles"
+                    +"&dbDriverInfo="+dbDriverInfo
+                    +"&tableName="+tableName
+                    +"&basePath="+ $.base64.encode($("#basePath").val())
+                    +"&tableComment="+$.base64.encode(encodeURI($("#tableComment").val()))
+                    +"&entity="+$("#cb_1").prop("checked")
+                    +"&dao="+$("#cb_2").prop("checked")
+                    +"&mapper="+$("#cb_3").prop("checked")
+                    +"&logic="+$("#cb_4").prop("checked")
+                    +"&controller="+$("#cb_5").prop("checked")
+                    +"&ftl="+$("#cb_6").prop("checked")
+                    +"&js="+$("#cb_7").prop("checked")
+        }else{
+            if(!confirm("是否确定储存？\n说明：SQLITE数据库不支持储存，点击确定无任何效果")){
+                return;
+            }
+            var buildurl="/generator?type=a_02_buildFiles"
+                    +"&dbDriverInfo="+dbDriverInfo
+                    +"&tableName="+tableName
+                    +"&basePath="+ $.base64.encode($("#basePath").val())
+                    +"&tableComment="+$.base64.encode(encodeURI($("#tableComment").val()))
+                    +"&entity=false"
+                    +"&dao=false"
+                    +"&mapper=false"
+                    +"&logic=false"
+                    +"&controller=false"
+                    +"&ftl=false"
+                    +"&js=false"
+        }
+
+
+        var buildParam = [];
+        $("#tableInfo tr:gt(0)").each(function(){
+            var column =  $(this).find("td:eq(0)").text();
+            var columnName =  $(this).find("td:eq(1) input").val();
+            var sqlType = $(this).find("td:eq(2)").text();
+            var type = $(this).find("td:eq(3) select").val();
+            var isPrimaryKey = $(this).find("td:eq(5) select").val();
+            var columnTypeColumnSize = $(this).find("td:eq(6)").text();
+            var columnTypeColumnDecimalDigits = $(this).find("td:eq(7)").text();
+            var isNullAble = $(this).find("td:eq(8)").text();
+
+            var obj = {};
+            obj.column = column;
+            obj.columnName = columnName;
+            obj.sqlType = sqlType;
+            obj.type = type;
+            obj.isPrimaryKey = isPrimaryKey;
+            obj.columnTypeColumnSize = columnTypeColumnSize;
+            obj.columnTypeColumnDecimalDigits = columnTypeColumnDecimalDigits;
+            obj.isNullAble = isNullAble;
+
+            $(this).find("td:eq(4) input").each(function(){
+                var id = $(this).attr("id");
+                var value=$(this).val();
+                obj[id]=value;
+            });
+            $(this).find("td:eq(4) select").each(function(){
+                var id = $(this).attr("id");
+                var value=$(this).val();
+                obj[id]=value;
+            });
+            buildParam.push(obj);
+        });
+
+        buildParam = JSON.stringify(buildParam);
+        buildParam = encodeURI(buildParam);
+        $.ajax({
+            url:buildurl,
+            type:"POST",
+            data:"buildParam="+buildParam,
+            dataType:"json",
+            success:function(data){
+                if(data.resCode=="0000"){
+                    alert("成功");
+                }else{
+                    alert("生成失败，错误原因如下:"+data.resDesc)
+                }
+            }
+        })
+    }
+</script>
+<hr>
+<style>
+    table{
+        border-collapse:collapse;
+    }
+    td{
+        border: solid 1px #000000;
+        height: 20px;
+    }
+    .sztitle{
+        width:200px;
+        display:block;
+        float:left;
+    }
+    .szinput{
+        width:490px;
+    }
+    .szselect{
+        width:490px;
+    }
+
+</style>
+
+
+
+<table id="tableInfo" >
+    <tr>
+        <td style="width:100px;">COLUMN</td>
+        <td style="width:100px;">列名</td>
+        <td style="width:100px;">数据库类型</td>
+        <td style="width:100px;">类型</td>
+        <td style="width:700px;">配置</td>
+        <td style="width:100px;">主键</td>
+        <td style="width:50px;">数据库宽度</td>
+        <td style="width:50px;">数据库精度</td>
+        <td style="width:50px;">是否可以为空</td>
+    </tr>
+</table>
+</body>
+</html>
