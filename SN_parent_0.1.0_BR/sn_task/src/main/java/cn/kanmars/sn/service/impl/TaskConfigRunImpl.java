@@ -2,9 +2,9 @@ package cn.kanmars.sn.service.impl;
 
 import java.util.List;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.SpringBeanFactory;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.SpringBeanFactory;
 import cn.kanmars.sn.bean.TaskBasicConfig;
 import cn.kanmars.sn.cache.SystemConfigInfoCache;
 import cn.kanmars.sn.dao.TaskInfoDAO;

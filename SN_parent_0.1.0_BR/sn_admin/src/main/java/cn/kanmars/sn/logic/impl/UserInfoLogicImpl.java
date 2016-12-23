@@ -1,7 +1,7 @@
 package cn.kanmars.sn.logic.impl;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.dao.TblSysuserInfoMapper;
 import cn.kanmars.sn.entity.TblSysuserInfo;
 import cn.kanmars.sn.util.PageQueryUtil;

@@ -1,9 +1,9 @@
 package cn.kanmars.sn.logic.impl;
 
-import cn.com.sn.frame.exception.SnCommonException;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.logic.ResultEnum;
+import cn.com.xcommon.frame.exception.SnCommonException;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logic.ResultEnum;
 import cn.kanmars.sn.logic.ALogic;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;

@@ -43,8 +43,8 @@ public class Create_004_LogicImpl implements Pipe {
         sb.append("/**\r\n * SN Generator \r\n */\r\n");
         sb.append("package "+(String)c.get(Context.PACKAGE_LOGIC)+".impl;").append("\r\n").append("\r\n").append("\r\n");
         //增加import
-        sb.append("import cn.com.sn.frame.logger.HLogger;").append("\r\n");
-        sb.append("import cn.com.sn.frame.logger.LoggerManager;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.HLogger;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.LoggerManager;").append("\r\n");
 
         sb.append("import cn.kanmars.sn.util.PageQueryUtil;").append("\r\n");
         sb.append("import net.sf.json.JSONObject;").append("\r\n");

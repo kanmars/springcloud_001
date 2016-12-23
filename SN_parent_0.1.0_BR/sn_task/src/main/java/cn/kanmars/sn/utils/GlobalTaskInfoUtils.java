@@ -1,10 +1,10 @@
 package cn.kanmars.sn.utils;
 
-import cn.com.sn.frame.cache.ApplicationCache;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.DateFormatUtils;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.cache.ApplicationCache;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.DateFormatUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.cache.SystemConfigInfoCache;
 import cn.kanmars.sn.service.TaskListenerService;
 import net.sf.json.JSONObject;

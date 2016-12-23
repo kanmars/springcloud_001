@@ -1,8 +1,8 @@
 package cn.kanmars.sn.rule;
 
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;

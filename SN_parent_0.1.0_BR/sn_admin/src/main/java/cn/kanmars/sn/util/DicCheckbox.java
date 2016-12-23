@@ -1,6 +1,6 @@
 package cn.kanmars.sn.util;
 
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.entity.TblSysDic;
 import net.sf.json.JSONArray;
 import org.springframework.stereotype.Service;

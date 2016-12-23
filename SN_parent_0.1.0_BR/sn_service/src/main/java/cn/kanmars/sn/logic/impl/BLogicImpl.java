@@ -1,8 +1,8 @@
 package cn.kanmars.sn.logic.impl;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.logic.ResultEnum;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logic.ResultEnum;
 import cn.kanmars.sn.logic.BLogic;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;

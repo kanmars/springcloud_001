@@ -6,8 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.bean.TaskBasicConfig;
 import cn.kanmars.sn.cache.SystemConfigInfoCache;
 import cn.kanmars.sn.dao.TaskInfoDAO;

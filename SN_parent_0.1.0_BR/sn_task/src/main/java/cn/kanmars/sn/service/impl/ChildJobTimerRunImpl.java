@@ -8,11 +8,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.DateUtils;
-import cn.com.sn.frame.util.SpringBeanFactory;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.DateUtils;
+import cn.com.xcommon.frame.util.SpringBeanFactory;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.bean.TaskBasicConfig;
 import cn.kanmars.sn.cache.SystemConfigInfoCache;
 import cn.kanmars.sn.step.AbstractStep;

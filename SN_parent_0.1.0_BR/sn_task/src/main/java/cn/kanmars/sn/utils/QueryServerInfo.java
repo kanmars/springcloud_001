@@ -9,8 +9,8 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Properties;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.bean.TaskBasicConfig;
 import org.apache.commons.lang.StringUtils;
 

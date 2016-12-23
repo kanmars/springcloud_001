@@ -41,7 +41,7 @@
             <version>1.7.0</version>
         </dependency>
         <dependency>
-            <groupId>cn.com.sn</groupId>
+            <groupId>cn.com.xcommon</groupId>
             <artifactId>commons-frame</artifactId>
             <version>4.0.0</version>
         </dependency>
@@ -99,6 +99,7 @@
             <artifactId>javassist</artifactId>
             <version>3.12.1.GA</version>
         </dependency>
+
     </dependencies>
     <build>
         <finalName>sn_dao</finalName>

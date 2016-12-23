@@ -12,7 +12,7 @@
         http://www.springframework.org/schema/tx  
         http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="sn-eppc"  class="cn.com.sn.frame.util.EncryptPropertyPlaceholderConfigurer">
+    <bean id="sn-eppc"  class="cn.com.xcommon.frame.util.EncryptPropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
                 <value>classpath*:/props/sn/jdbc/jdbc.properties</value>

@@ -1,7 +1,7 @@
 package cn.kanmars.sn.logic.impl;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.dao.TblSysDicMapper;
 import cn.kanmars.sn.entity.TblSysDic;
 import cn.kanmars.sn.util.SysSequenceUtils;

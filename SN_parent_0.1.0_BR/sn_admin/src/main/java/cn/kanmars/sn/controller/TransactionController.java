@@ -1,8 +1,8 @@
 package cn.kanmars.sn.controller;
 
-import cn.com.sn.frame.controller.BaseController;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.controller.BaseController;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.logic.TransactionLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -21,11 +21,11 @@ public class FreeMarkerViewResolverAutoConfiguration {
         freeMarkerViewResolver.setRequestContextAttribute("request");
         freeMarkerViewResolver.setOrder(0);
         freeMarkerViewResolver.setAttributesMap(new HashMap<String, Object>(){{
-            this.put("ddt",new cn.com.sn.frame.template.DataDictionaryTemplate());
-            this.put("dft",new cn.com.sn.frame.template.DateFormatTemplate());
-            this.put("mft",new cn.com.sn.frame.template.MoneyFormatTemplate());
-            this.put("sft",new cn.com.sn.frame.template.StringFormatTemplate());
-            this.put("props",new cn.com.sn.frame.template.PropsConfigTemplate());
+            this.put("ddt",   new cn.com.xcommon.frame.template.DataDictionaryTemplate());
+            this.put("dft",   new cn.com.xcommon.frame.template.DateFormatTemplate());
+            this.put("mft",   new cn.com.xcommon.frame.template.MoneyFormatTemplate());
+            this.put("sft",   new cn.com.xcommon.frame.template.StringFormatTemplate());
+            this.put("props", new cn.com.xcommon.frame.template.PropsConfigTemplate());
         }});
         return freeMarkerViewResolver;
     }

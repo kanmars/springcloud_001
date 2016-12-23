@@ -1,8 +1,8 @@
 package cn.kanmars.sn.dyndata;
 
-import cn.com.sn.frame.util.MainSecurity;
-import cn.com.sn.frame.util.PropertiesUtils;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.util.MainSecurity;
+import cn.com.xcommon.frame.util.PropertiesUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.BeansException;

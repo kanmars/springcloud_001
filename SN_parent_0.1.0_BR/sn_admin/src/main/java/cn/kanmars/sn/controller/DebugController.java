@@ -1,7 +1,7 @@
 package cn.kanmars.sn.controller;
 
 
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.base.AdvancedAjaxBaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

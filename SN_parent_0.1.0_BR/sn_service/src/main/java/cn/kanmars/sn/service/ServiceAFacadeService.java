@@ -1,9 +1,9 @@
 package cn.kanmars.sn.service;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.logic.ResultEnum;
-import cn.com.sn.frame.util.*;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logic.ResultEnum;
+import cn.com.xcommon.frame.util.*;
 import cn.kanmars.sn.logic.ALogic;
 import cn.kanmars.sn.logic.BLogic;
 import org.springframework.beans.factory.annotation.Autowired;

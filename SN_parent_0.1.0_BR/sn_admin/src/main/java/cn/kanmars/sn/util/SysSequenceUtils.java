@@ -10,12 +10,12 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.PostConstruct;
 
-import cn.com.sn.commons.utils.IDCreaterPlusUtils;
-import cn.com.sn.frame.exception.SnCommonException;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.DateUtils;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.commons.utils.IDCreaterPlusUtils;
+import cn.com.xcommon.frame.exception.SnCommonException;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.DateUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.dao.TblSysSequenceMapper;
 import cn.kanmars.sn.entity.TblSysSequence;
 import org.apache.commons.lang.math.RandomUtils;

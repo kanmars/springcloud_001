@@ -1,8 +1,8 @@
 package cn.kanmars.sn.listener;
 
-import cn.com.sn.frame.cache.ApplicationCache;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.cache.ApplicationCache;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import org.apache.commons.lang.StringUtils;
 
 import javax.servlet.ServletContextEvent;

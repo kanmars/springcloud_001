@@ -48,13 +48,13 @@ public class Create_005_Controller implements Pipe {
         sb.append("/**\r\n * SN Generator \r\n */\r\n");
         sb.append("package "+(String)c.get(Context.PACKAGE_CONTROLLER)+";").append("\r\n").append("\r\n").append("\r\n");
         //增加import
-        sb.append("import cn.com.sn.frame.logger.HLogger;").append("\r\n");
-        sb.append("import cn.com.sn.frame.logger.LoggerManager;").append("\r\n");
-        sb.append("import cn.com.sn.frame.util.DateFormatUtils;").append("\r\n");
-        sb.append("import cn.com.sn.frame.util.MapObjTransUtils;").append("\r\n");
-        sb.append("import cn.com.sn.frame.util.MoneyFormatUtils;").append("\r\n");
-        sb.append("import cn.com.sn.frame.util.StringUtils;").append("\r\n");
-        sb.append("import cn.com.sn.frame.util.DateUtils;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.HLogger;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.LoggerManager;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.util.DateFormatUtils;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.util.MapObjTransUtils;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.util.MoneyFormatUtils;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.util.StringUtils;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.util.DateUtils;").append("\r\n");
         sb.append("import cn.kanmars.sn.util.SysSequenceUtils;").append("\r\n");
         sb.append("import cn.kanmars.sn.util.SysDicUtils;").append("\r\n");
         sb.append("import cn.kanmars.sn.base.AdvancedAjaxBaseController;").append("\r\n");

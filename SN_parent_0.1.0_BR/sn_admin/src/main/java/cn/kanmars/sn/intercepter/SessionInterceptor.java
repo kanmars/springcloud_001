@@ -1,7 +1,7 @@
 package cn.kanmars.sn.intercepter;
 
-import cn.com.sn.frame.cache.ApplicationCache;
-import cn.com.sn.frame.util.CookiesUtils;
+import cn.com.xcommon.frame.cache.ApplicationCache;
+import cn.com.xcommon.frame.util.CookiesUtils;
 import cn.kanmars.sn.base.AdvancedUserLoginBean;
 import cn.kanmars.sn.controller.UsersLoginController;
 import cn.kanmars.sn.properties.sn_adminProperties;

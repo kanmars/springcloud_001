@@ -1,9 +1,9 @@
 package cn.kanmars.sn.util;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.MapObjTransUtils;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.MapObjTransUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.entity.TblSysDic;
 
 import java.util.ArrayList;

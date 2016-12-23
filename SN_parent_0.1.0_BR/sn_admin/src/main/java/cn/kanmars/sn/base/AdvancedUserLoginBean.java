@@ -1,8 +1,8 @@
 package cn.kanmars.sn.base;
 
-import cn.com.sn.common.security.base64.Base64Util;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.common.security.base64.Base64Util;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import net.sf.json.JSONObject;
 
 import javax.servlet.http.Cookie;

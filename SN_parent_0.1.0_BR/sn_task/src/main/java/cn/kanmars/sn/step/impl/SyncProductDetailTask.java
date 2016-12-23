@@ -1,9 +1,9 @@
 package cn.kanmars.sn.step.impl;
 
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.bean.TaskBasicConfig;
 import cn.kanmars.sn.dao.TblSysDicMapper;
 import cn.kanmars.sn.entity.TblSysDic;

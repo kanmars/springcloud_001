@@ -11,12 +11,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.PostConstruct;
 
-import cn.com.sn.frame.cache.ApplicationCache;
-import cn.com.sn.frame.cache.IdValue;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.DateFormatUtils;
-import cn.com.sn.frame.util.DateUtils;
+import cn.com.xcommon.frame.cache.ApplicationCache;
+import cn.com.xcommon.frame.cache.IdValue;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.DateFormatUtils;
+import cn.com.xcommon.frame.util.DateUtils;
 import cn.kanmars.sn.dao.TblSysDicMapper;
 import cn.kanmars.sn.entity.TblSysDic;
 import org.springframework.beans.BeansException;

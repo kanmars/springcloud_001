@@ -2,8 +2,8 @@ package cn.kanmars.sn.logic.impl;
 
 import java.util.HashMap;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.dao.TblSysroleInfoMapper;
 import cn.kanmars.sn.entity.TblSysroleInfo;
 import cn.kanmars.sn.util.PageQueryUtil;

@@ -12,6 +12,6 @@
     <aop:aspectj-autoproxy proxy-target-class="true"/>
     <context:annotation-config/>
     <context:component-scan base-package="cn.kanmars.sn"/>
-    <bean id="springBeanFactory" class="cn.com.sn.frame.util.SpringBeanFactory"/>
+    <bean id="springBeanFactory" class="cn.com.xcommon.frame.util.SpringBeanFactory"/>
     <import resource="classpath*:spring/sn-diamond-dataSource.xml"/>
 </beans>

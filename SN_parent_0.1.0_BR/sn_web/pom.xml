@@ -21,6 +21,31 @@
 
     <dependencies>
         <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-frame</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-jdbc</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-rpc</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-security</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-tools</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>

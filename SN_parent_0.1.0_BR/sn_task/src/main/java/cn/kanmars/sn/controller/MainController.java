@@ -1,7 +1,7 @@
 package cn.kanmars.sn.controller;
 
-import cn.com.sn.frame.util.MainSecurity;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.util.MainSecurity;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.utils.GlobalTaskInfoUtils;
 import cn.kanmars.sn.utils.BasisConstants;
 import cn.kanmars.sn.utils.TaskTrigerUtils;

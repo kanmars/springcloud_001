@@ -1,6 +1,6 @@
 package cn.kanmars.sn.logic;
 
-import cn.com.sn.frame.logic.ResultEnum;
+import cn.com.xcommon.frame.logic.ResultEnum;
 
 /**
  * Created by baolong on 2016/12/15.

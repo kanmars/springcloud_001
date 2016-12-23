@@ -95,10 +95,10 @@ public class GeneratorService {
         sb.append("package " + servicePackage +";").append("\r\n").append("\r\n");
 
 
-        sb.append("import cn.com.sn.frame.logger.HLogger;").append("\r\n");
-        sb.append("import cn.com.sn.frame.logger.LoggerManager;").append("\r\n");
-        sb.append("import cn.com.sn.frame.logic.ResultEnum;").append("\r\n");
-        sb.append("import cn.com.sn.frame.util.*;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.HLogger;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.LoggerManager;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logic.ResultEnum;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.util.*;").append("\r\n");
 
         for(Map.Entry e : logics.entrySet()){
             sb.append("import cn.kanmars.sn.logic."+e.getKey()+";").append("\r\n");
@@ -218,7 +218,7 @@ public class GeneratorService {
         sb.append("package " + logicPackage +";").append("\r\n").append("\r\n");
 
 
-        sb.append("import cn.com.sn.frame.logic.ResultEnum;").append("\r\n").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logic.ResultEnum;").append("\r\n").append("\r\n");
 
         sb.append("/**").append("\r\n");
         sb.append(" * "+logicDesc).append("\r\n");
@@ -260,9 +260,9 @@ public class GeneratorService {
         sb.append("package " + logicPackageImpl +";").append("\r\n").append("\r\n");
 
 
-        sb.append("import cn.com.sn.frame.logger.HLogger;").append("\r\n");
-        sb.append("import cn.com.sn.frame.logger.LoggerManager;").append("\r\n");
-        sb.append("import cn.com.sn.frame.logic.ResultEnum;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.HLogger;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logger.LoggerManager;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.logic.ResultEnum;").append("\r\n");
         sb.append("import " + logicPackage + "." + FormatUtils.firstBig(logicName) + ";").append("\r\n");
         sb.append("import org.springframework.stereotype.Component;").append("\r\n");
         sb.append("import org.springframework.transaction.annotation.Propagation;").append("\r\n");

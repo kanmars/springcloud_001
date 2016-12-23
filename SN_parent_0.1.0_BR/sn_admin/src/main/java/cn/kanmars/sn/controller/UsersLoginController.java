@@ -1,16 +1,14 @@
 package cn.kanmars.sn.controller;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import cn.com.sn.common.security.aes.AESUtil;
-import cn.com.sn.frame.controller.AjaxBaseController;
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.common.security.aes.AESUtil;
+import cn.com.xcommon.frame.controller.AjaxBaseController;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.base.AdvancedUserLoginBean;
 import cn.kanmars.sn.entity.TblSysConfig;
 import cn.kanmars.sn.entity.TblSysmenuInfo;
@@ -23,7 +21,6 @@ import cn.kanmars.sn.util.DicList;
 import cn.kanmars.sn.util.DicSelect;
 import net.sf.json.JSONArray;
 
-import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,10 +1,10 @@
 package cn.kanmars.sn.service.impl;
 
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.DateUtils;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.DateUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.cache.SystemConfigInfoCache;
 import cn.kanmars.sn.service.TaskListenerService;
 import cn.kanmars.sn.service.TaskRegisterService;

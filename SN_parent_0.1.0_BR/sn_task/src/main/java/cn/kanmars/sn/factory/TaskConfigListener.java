@@ -2,8 +2,8 @@ package cn.kanmars.sn.factory;
 
 import javax.annotation.PostConstruct;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import cn.kanmars.sn.dao.TaskInfoDAO;
 import cn.kanmars.sn.service.impl.TaskConfigRunImpl;
 import cn.kanmars.sn.utils.BasisConstants;

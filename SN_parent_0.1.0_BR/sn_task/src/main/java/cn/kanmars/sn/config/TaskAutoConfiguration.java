@@ -1,6 +1,6 @@
 package cn.kanmars.sn.config;
 
-import cn.com.sn.frame.util.SpringBeanFactory;
+import cn.com.xcommon.frame.util.SpringBeanFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanInitializationException;

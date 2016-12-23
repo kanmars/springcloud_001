@@ -8,9 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.com.sn.frame.logger.HLogger;
-import cn.com.sn.frame.logger.LoggerManager;
-import cn.com.sn.frame.util.StringUtils;
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
+import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.bean.DieTaskOpenConfig;
 import cn.kanmars.sn.bean.SiteChildTask;
 import cn.kanmars.sn.bean.TaskBasicConfig;
