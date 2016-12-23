@@ -1,0 +1,74 @@
+//使用文档  http://layer.layui.com/         http://layer.layui.com/api.html
+
+
+layer.alert('深蓝style', {skin: 'layui-layer-lan',closeBtn: 0,shift: 6 });
+    layer.alert 参数使用介绍
+        第一个参数为提示内容
+        skin:样式
+        closeBtn:关闭按钮样式
+        shift:弹出方式（ 1上、2下、3左、4左滚动、5中间、6抖动）
+
+
+//提示层
+layer.msg('预览', {icon: 1,time: 2000,offset: 'rb' }, function(){});
+    layer.msg 参数使用介绍：
+       icon: 1对号、2红X、3问号、4锁、5哭脸、6笑脸、其他数字为叹号
+       timne:自动关闭时间毫秒为单位（如果不配置，默认是3秒）
+       offset:提示框显示的位置 rb 为右下角，去掉offset属性
+       function:点击弹出框触发此事件
+
+layer.msg('无样式提示');//无样式提示，背景为灰色透明
+
+
+
+//页面层(弹出提示层)
+layer.open({
+    type: 1,
+    skin: 'layui-layer-rim', //加上边框
+    area: ['420px', '240px'], //宽高
+    content: 'html内容'
+});
+
+
+
+//询问框
+layer.confirm('是否删除？', {
+    btn: ['确定','取消'] //按钮
+}, function(){
+    layer.msg('删除成功', {icon: 1});
+}, function(){//<---取消事件可以删除掉
+    layer.msg('取消', {
+        time: 20000, //20s后自动关闭
+        btn: ['取消成功1', '取消成功2']
+    });
+});
+
+			
+
+//iframe窗
+layer.open({
+    type: 2,
+    title: false,
+    closeBtn: 0, //不显示关闭按钮
+    shade: [0],
+    area: ['340px', '215px'],
+    offset: 'rb', //右下角弹出
+    time: 2000, //2秒后自动关闭
+    shift: 2,
+    content: ['test/guodu.html', 'no'], //iframe的url，no代表不显示滚动条
+    end: function(){ //此处用于演示
+        layer.open({
+            type: 2,
+            title: '很多时候，我们想最大化看，比如像这个页面。',
+            shadeClose: true,
+            shade: false,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['893px', '600px'],
+            content: 'http://fly.layui.com/'
+        });
+    }
+});
+
+
+-------------------------------------------------------------------
+上述是常用的提示方法，如有需要可到 http://layer.layui.com/  查找解决方法

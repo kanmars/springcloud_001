@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>cn.com.sn</groupId>
+	<artifactId>commons</artifactId>
+	<version>4.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>commons</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+	</dependencies>
+	<!-- 
+		使用说明
+			在maven的setting.xml文件中增加
+			<servers>
+				<server>
+					<id>releases</id>
+					<username>admin</username>
+					<password>admin123</password>
+				</server>
+				<server>
+					<id>snapshots</id>
+					<username>admin</username>
+					<password>admin123</password>
+				</server>
+			</servers>
+		配置
+		然后在要发布的jar包中增加如下配置
+		<distributionManagement>
+			<snapshotRepository>
+				<id>snapshots</id>
+				<url>http://maven.ds.gome.com.cn/nexus/content/repositories/snapshots</url>
+			</snapshotRepository>
+			<repository>
+				<id>releases</id>
+				<url>http://maven.ds.gome.com.cn/nexus/content/repositories/releases</url>
+			</repository>
+		</distributionManagement>
+		然后运行mvn clean package install deploy -DskipTests
+		即可把该jar包发布到nexus服务器上
+		注意：
+			版本号中如果末尾是“SNAPSHOT”，则无法上传到releases中，会报400错误
+	 -->
+	<distributionManagement>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<url>http://maven.ds.gome.com.cn/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>releases</id>
+			<url>http://maven.ds.gome.com.cn/nexus/content/repositories/releases</url>
+		</repository>
+	</distributionManagement>
+	<modules>
+		<module>commons-frame</module>
+		<module>commons-security</module>
+		<module>commons-jdbc</module>
+		<module>commons-tools</module>
+		<module>commons-rpc</module>
+	</modules>
+</project>

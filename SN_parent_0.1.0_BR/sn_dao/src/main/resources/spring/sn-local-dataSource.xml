@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd  
+        http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd  
+        http://www.springframework.org/schema/context  
+        http://www.springframework.org/schema/context/spring-context.xsd  
+        http://www.springframework.org/schema/tx  
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="sn-eppc"  class="cn.com.sn.frame.util.EncryptPropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath*:/props/sn/jdbc/jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--主数据库-->
+    <bean id="sn-DataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <!-- 数据源驱动类可不写，Druid默认会自动根据URL识别DriverClass -->
+        <property name="driverClassName" value="${sn.jdbc.driverClass}" />
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${sn.jdbc.url}" />
+        <property name="username" value="${sn.jdbc.username}" />
+        <property name="password" value="${sn.jdbc.password}" />
+
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${sn.cpool.minPoolSize}" />
+        <property name="minIdle" value="${sn.cpool.minPoolSize}" />
+        <property name="maxActive" value="${sn.cpool.maxPoolSize}" />
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${sn.cpool.maxIdleTime}" />
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="${sn.cpool.maxIdleTime}" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="${sn.cpool.maxIdleTime}" />
+
+        <property name="validationQuery" value="SELECT 'x' from dual" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+    </bean>
+
+    <bean id="sn-DataSources" class="cn.kanmars.sn.dyndata.DynamicDataSource">
+
+    </bean>
+
+    <bean id="sn-SessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" scope="singleton">
+        <property name="dataSource" ref="sn-DataSource" />
+        <property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:/props/sn/mapper/*.xml</value>
+            </list>
+        </property>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage"	value="cn.kanmars.sn.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sn-SessionFactory" />
+        <property name="annotationClass" value="cn.kanmars.sn.MybatisRepository" />
+    </bean>
+    <bean id="sn-txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="sn-DataSource"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="sn-txManager" proxy-target-class="true" />
+</beans>

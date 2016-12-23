@@ -1,0 +1,226 @@
+.gmPagination {
+	clear: both;
+	height: 32px;
+}
+
+.gmPagination a, .gmPagination span, .gmPagination label, .gmPagination button
+	{
+	float: left;
+}
+
+.gmPagination a, .gmPagination span.cur {
+	background: #fff none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	color: #5e5e5e;
+	font: 14px/30px Arial;
+	height: 30px;
+	margin: 0 0 0 -1px;
+	padding: 0 12px;
+}
+
+.gmPagination span.cur {
+	background: #f8f8f8 none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	color: #a5a5a5;
+	font-weight: 700;
+}
+
+.gmPagination a:hover {
+	border-color: #ccc;
+	color: #cc0000;
+	text-decoration: none;
+}
+
+.gmPagination a.prev:hover, .gmPagination a.next:hover {
+	background: #fff none repeat scroll 0 0;
+	color: #cc0000;
+	font-weight: normal;
+}
+
+.gmPagination s {
+	color: #cc0000;
+	font: 700 16px/28px "宋体";
+	position: absolute;
+	text-decoration: none;
+}
+
+.gmPagination .prev {
+	font-size: 12px;
+	padding: 0 9px 0 21px;
+	position: relative;
+}
+
+.gmPagination .prev s {
+	left: 9px;
+}
+
+.gmPagination .next {
+	font-size: 12px;
+	padding: 0 21px 0 9px;
+	position: relative;
+}
+
+.gmPagination .next s {
+	right: 9px;
+}
+
+.gmPagination .placeholder {
+	height: 32px;
+	line-height: 24px;
+	margin: 0 8px;
+	overflow: hidden;
+	width: 16px;
+}
+
+.gmPagination .show-more {
+	border: 0 none;
+	font-weight: 500;
+	margin: 0 10px;
+	padding: 0 14px 0 0;
+}
+
+.gmPagination .show-more:hover {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: 0 none;
+	color: #ea5504;
+	text-decoration: underline;
+}
+
+.gmPagination .txt-wrap {
+	color: #959595;
+	margin: 0 5px 0 10px;
+	padding-top: 3px;
+}
+
+.gmPagination .txt {
+	border: 1px solid #ccc;
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	margin: 0 5px;
+	overflow: hidden;
+	text-align: center;
+	width: 32px;
+}
+
+.gmPagination .txt:focus {
+	border-color: #a5a5a5;
+}
+
+.gmPagination .btn {
+	background: #f8f8f8 none repeat scroll 0 0;
+	border: 1px solid #ddd;
+	cursor: pointer;
+	font-size: 12px;
+	height: 24px;
+	line-height: 24px;
+	margin-top: 3px;
+	overflow: hidden;
+	padding: 0;
+	text-align: center;
+	width: 43px;
+}
+
+.gmPagination .btn:hover {
+	border: 1px solid #ccc;
+	color: #333;
+}
+
+.gmPagination .btn:active {
+	background: #f3f3f3 none repeat scroll 0 0;
+}
+
+.gmPagination .disable {
+	background: #f8f8f8 none repeat scroll 0 0;
+	color: #ccc;
+	cursor: default;
+}
+
+.gmPagination a.disable:hover {
+	background: #f8f8f8 none repeat scroll 0 0;
+	border-color: #ddd;
+	color: #ccc;
+}
+
+.gmPagination .disable s {
+	color: #ccc;
+}
+.gmPagination-mini {
+	height: 40px;
+}
+
+.gmPagination-mini a, .gmPagination-mini span.cur {
+	background: #fff none repeat scroll 0 0;
+	border: 1px solid #fff;
+	height: 20px;
+	line-height: 20px;
+	padding: 0 4px;
+}
+
+.gmPagination-mini a:hover {
+	border: 1px solid #fff;
+	text-decoration: underline;
+}
+
+.gmPagination-mini .placeholder {
+	height: 22px;
+	line-height: 16px;
+	margin: 0;
+}
+
+.gmPagination-mini .prev, .gmPagination-mini .next {
+	border: 1px solid #ddd;
+	height: 20px;
+	padding: 0;
+	text-indent: 5px;
+	width: 20px;
+}
+
+.gmPagination-mini .next {
+	text-indent: 6px;
+}
+
+.gmPagination-mini s {
+	line-height: 20px;
+	position: static;
+}
+
+.gmPagination-mini .prev:hover, .gmPagination-mini .next:hover {
+	border-color: #ccc;
+	text-decoration: none;
+}
+
+.gmPagination-mini .txt-wrap {
+	height: 22px;
+	line-height: 22px;
+	padding-top: 0;
+}
+
+.gmPagination-mini .txt {
+	height: 20px;
+	line-height: 20px;
+	overflow: hidden;
+	padding: 0;
+}
+
+.gmPagination-mini .btn {
+	height: 20px;
+	line-height: 20px;
+	margin: 0;
+}
+
+.gmPagination-mini .btn:hover {
+	text-decoration: none;
+}
+.clearfix::after {
+	clear: both;
+	content: ".";
+	display: block;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: block;
+}

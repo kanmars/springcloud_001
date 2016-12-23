@@ -1,0 +1,26 @@
+@Bean("kkk")
+public DynamicDataSourceRouter create(){
+    return new DynamicDataSourceRouter(){
+        @Override
+        public String router(Object partionKey) {
+            return "sn-DataSource-ds1";
+        }
+    };
+}
+
+
+/*
+ * 查询信息
+ */
+@DynamicDataSourceMethod(partionKeyIndex = 0,value="kkk")
+public TblSysmenuInfo querySysmenuInfo(TblSysmenuInfo tblSysmenuInfo) throws Exception {
+    logger.debug("querySysmenuInfo:start");
+    logger.debug("传入参数:tblSysmenuInfo:" + (tblSysmenuInfo != null ? JSONObject.fromObject(tblSysmenuInfo).toString() : "null"));
+    TblSysmenuInfo result = tblSysmenuInfoMapper.select(tblSysmenuInfo);
+    logger.debug("查询结果:tblSysmenuInfo:" + (result != null ? JSONObject.fromObject(result).toString() : "null"));
+    logger.debug("querySysmenuInfo:end");
+    return result;
+}
+
+任何一个方法加上了DynamicDataSourceMethod注解，在执行此方法之前会根据partionKeyIndex代表的参数序号，用value代表的DynamicDataSourceRouter对象选择数据源，
+优先级在事务处理之前，因此可以实现分库分表功能

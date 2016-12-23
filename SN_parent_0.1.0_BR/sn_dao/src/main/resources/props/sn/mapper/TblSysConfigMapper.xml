@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.sn.dao.TblSysConfigMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.sn.entity.TblSysConfig">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="version" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="system_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="img_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="status" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="create_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="update_time" javaType="java.lang.String" jdbcType="CHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,version,system_name,img_url,status,create_time,create_name,update_time
+    </sql>
+    <select id="select" parameterType="cn.kanmars.sn.entity.TblSysConfig" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_config
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="version != null and version != '' ">
+            and version = #{version,jdbcType=VARCHAR}
+        </if>
+        <if test="systemName != null and systemName != '' ">
+            and system_name = #{systemName,jdbcType=VARCHAR}
+        </if>
+        <if test="imgUrl != null and imgUrl != '' ">
+            and img_url = #{imgUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createName != null and createName != '' ">
+            and create_name = #{createName,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.sn.entity.TblSysConfig" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_config
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="version != null and version != '' ">
+            and version = #{version,jdbcType=VARCHAR}
+        </if>
+        <if test="systemName != null and systemName != '' ">
+            and system_name = #{systemName,jdbcType=VARCHAR}
+        </if>
+        <if test="imgUrl != null and imgUrl != '' ">
+            and img_url = #{imgUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createName != null and createName != '' ">
+            and create_name = #{createName,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.sn.entity.TblSysConfig" >
+        insert into tbl_sys_config
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="version != null ">
+                version,
+            </if>
+            <if test="systemName != null ">
+                system_name,
+            </if>
+            <if test="imgUrl != null ">
+                img_url,
+            </if>
+            <if test="status != null ">
+                status,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="createName != null ">
+                create_name,
+            </if>
+            <if test="updateTime != null ">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="version != null ">
+                #{version,jdbcType=VARCHAR},
+            </if>
+            <if test="systemName != null ">
+                #{systemName,jdbcType=VARCHAR},
+            </if>
+            <if test="imgUrl != null ">
+                #{imgUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null ">
+                #{status,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="createName != null ">
+                #{createName,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime != null ">
+                #{updateTime,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.sn.entity.TblSysConfig" >
+        update tbl_sys_config
+        <set>
+            <if test="version != null">
+                version = #{version,jdbcType=VARCHAR} ,
+            </if>
+            <if test="systemName != null">
+                system_name = #{systemName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="imgUrl != null">
+                img_url = #{imgUrl,jdbcType=VARCHAR} ,
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=CHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=CHAR} ,
+            </if>
+            <if test="createName != null">
+                create_name = #{createName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.sn.entity.TblSysConfig" >
+        delete from tbl_sys_config
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="version != null and version != '' ">
+                and version = #{version,jdbcType=VARCHAR}
+            </if>
+            <if test="systemName != null and systemName != '' ">
+                and system_name = #{systemName,jdbcType=VARCHAR}
+            </if>
+            <if test="imgUrl != null and imgUrl != '' ">
+                and img_url = #{imgUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null and status != '' ">
+                and status = #{status,jdbcType=CHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="createName != null and createName != '' ">
+                and create_name = #{createName,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null and updateTime != '' ">
+                and update_time = #{updateTime,jdbcType=CHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_config
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="version != null and version != '' ">
+            and version = #{version,jdbcType=VARCHAR}
+        </if>
+        <if test="systemName != null and systemName != '' ">
+            and system_name = #{systemName,jdbcType=VARCHAR}
+        </if>
+        <if test="imgUrl != null and imgUrl != '' ">
+            and img_url = #{imgUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createName != null and createName != '' ">
+            and create_name = #{createName,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_config
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="version != null and version != '' ">
+            and version = #{version,jdbcType=VARCHAR}
+        </if>
+        <if test="systemName != null and systemName != '' ">
+            and system_name = #{systemName,jdbcType=VARCHAR}
+        </if>
+        <if test="imgUrl != null and imgUrl != '' ">
+            and img_url = #{imgUrl,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createName != null and createName != '' ">
+            and create_name = #{createName,jdbcType=VARCHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_sys_config
+        <set>
+            <if test="version_new != null">
+                version = #{version_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="systemName_new != null">
+                system_name = #{systemName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="imgUrl_new != null">
+                img_url = #{imgUrl_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="status_new != null">
+                status = #{status_new,jdbcType=CHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="createName_new != null">
+                create_name = #{createName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="updateTime_new != null">
+                update_time = #{updateTime_new,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="version != null ">
+                and version = #{version,jdbcType=VARCHAR}
+            </if>
+            <if test="systemName != null ">
+                and system_name = #{systemName,jdbcType=VARCHAR}
+            </if>
+            <if test="imgUrl != null ">
+                and img_url = #{imgUrl,jdbcType=VARCHAR}
+            </if>
+            <if test="status != null ">
+                and status = #{status,jdbcType=CHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="createName != null ">
+                and create_name = #{createName,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime != null ">
+                and update_time = #{updateTime,jdbcType=CHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_config
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="version != null and version != '' ">
+            and version like CONCAT(#{version,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="systemName != null and systemName != '' ">
+            and system_name like CONCAT(#{systemName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="imgUrl != null and imgUrl != '' ">
+            and img_url like CONCAT(#{imgUrl,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="status != null and status != '' ">
+            and status = #{status,jdbcType=CHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createName != null and createName != '' ">
+            and create_name like CONCAT(#{createName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_sys_config (id,version,system_name,img_url,status,create_time,create_name,update_time) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.version},#{item.systemName},#{item.imgUrl},#{item.status},#{item.createTime},#{item.createName},#{item.updateTime}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_sys_config
+            <set>
+                <if test="item.version_new != null">
+                    version = #{item.version_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.systemName_new != null">
+                    system_name = #{item.systemName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.imgUrl_new != null">
+                    img_url = #{item.imgUrl_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.status_new != null">
+                    status = #{item.status_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.createName_new != null">
+                    create_name = #{item.createName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.updateTime_new != null">
+                    update_time = #{item.updateTime_new,jdbcType=CHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.version != null ">
+                    and version = #{item.version,jdbcType=VARCHAR}
+                </if>
+                <if test="item.systemName != null ">
+                    and system_name = #{item.systemName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.imgUrl != null ">
+                    and img_url = #{item.imgUrl,jdbcType=VARCHAR}
+                </if>
+                <if test="item.status != null ">
+                    and status = #{item.status,jdbcType=CHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=CHAR}
+                </if>
+                <if test="item.createName != null ">
+                    and create_name = #{item.createName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.updateTime != null ">
+                    and update_time = #{item.updateTime,jdbcType=CHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_config
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+
