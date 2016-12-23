@@ -4,11 +4,11 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>cn.com.sn</groupId>
+		<groupId>cn.com.xcommon</groupId>
 		<artifactId>commons</artifactId>
 		<version>4.0.0</version>
 	</parent>
-	<groupId>cn.com.sn</groupId>
+	<groupId>cn.com.xcommon</groupId>
 	<artifactId>commons-security</artifactId>
 	<version>4.0.0</version>
 	<name>commons-security</name>

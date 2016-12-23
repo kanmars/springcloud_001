@@ -22,19 +22,19 @@
 		<property name="attributesMap">
 			<map>
 				<entry key="ddt">
-					<bean class="cn.com.sn.frame.template.DataDictionaryTemplate"></bean>
+					<bean class="cn.com.xcommon.frame.template.DataDictionaryTemplate"></bean>
 				</entry>
 				<entry key="dft">
-					<bean class="cn.com.sn.frame.template.DateFormatTemplate"></bean>
+					<bean class="cn.com.xcommon.frame.template.DateFormatTemplate"></bean>
 				</entry>
 				<entry key="mft">
-					<bean class="cn.com.sn.frame.template.MoneyFormatTemplate"></bean>
+					<bean class="cn.com.xcommon.frame.template.MoneyFormatTemplate"></bean>
 				</entry>
 				<entry key="sft">
-					<bean class="cn.com.sn.frame.template.StringFormatTemplate"></bean>
+					<bean class="cn.com.xcommon.frame.template.StringFormatTemplate"></bean>
 				</entry>
 				<entry key="props">
-					<bean class="cn.com.sn.frame.template.PropsConfigTemplate"></bean>
+					<bean class="cn.com.xcommon.frame.template.PropsConfigTemplate"></bean>
 				</entry>
 			</map>
 		</property>

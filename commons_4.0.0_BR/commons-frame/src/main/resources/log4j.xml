@@ -46,17 +46,17 @@
 	
 	
 	<appender name="STD_OUT_FILE" class="org.apache.log4j.ConsoleAppender">
-		<layout class="cn.com.sn.frame.logger.ExPatternLayout"/>
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
 	</appender>
 	
 	<appender name="TXN_LOG_FILE" class="org.apache.log4j.RollingFileAppender">
 		<param name="Append" value="true" />
-		<layout class="cn.com.sn.frame.logger.ExPatternLayout"/>
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
 	</appender>
 
 	<appender name="ERROR_LOG_FILE" class="org.apache.log4j.RollingFileAppender">
 		<param name="Append" value="true" />
-		<layout class="cn.com.sn.frame.logger.ExPatternLayout"/>
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
 			<param name="LevelMin" value="ERROR" />
 			<param name="LevelMax" value="FATAL" />
@@ -65,7 +65,7 @@
 	
 	<appender name="ALL_LOG_FILE" class="org.apache.log4j.RollingFileAppender">
 		<param name="Append" value="true" />
-		<layout class="cn.com.sn.frame.logger.ExPatternLayout"/>
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
 		<filter class="org.apache.log4j.varia.LevelRangeFilter">
 		</filter>
 	</appender>
