@@ -1,4 +1,4 @@
-package cn.kanmars.sn.resolver;
+package cn.kanmars.sn.autoconf;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;

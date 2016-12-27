@@ -1,16 +1,5 @@
 package cn.kanmars.sn.util;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.concurrent.ConcurrentHashMap;
-
-import javax.annotation.PostConstruct;
-
 import cn.com.xcommon.frame.cache.ApplicationCache;
 import cn.com.xcommon.frame.cache.IdValue;
 import cn.com.xcommon.frame.logger.HLogger;
@@ -20,10 +9,14 @@ import cn.com.xcommon.frame.util.DateUtils;
 import cn.kanmars.sn.dao.TblSysDicMapper;
 import cn.kanmars.sn.entity.TblSysDic;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.PostConstruct;
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 数据字典工具类，使用示例，本版本为MYSQL版本<br>
@@ -48,7 +41,6 @@ import org.springframework.stereotype.Service;
         alter table tbl_sys_dic comment '系统字典表';
  *
  */
-@Service
 public class SysDicUtils implements ApplicationContextAware {
 
     private static HLogger logger= LoggerManager.getLoger("SysDicUtils");

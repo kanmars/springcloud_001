@@ -1,4 +1,4 @@
-package cn.kanmars.sn.resolver;
+package cn.kanmars.sn.autoconf;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

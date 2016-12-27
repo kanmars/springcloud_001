@@ -100,6 +100,11 @@
             <artifactId>sn_dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>cn.kanmars</groupId>
+            <artifactId>sn_bean</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -120,5 +125,54 @@
                 </configuration>
             </plugin>
         </plugins>
+        <!--<filters>
+            <filter>${profiles.dir}\${env}\task.properties</filter>
+        </filters>-->
+        <resources>
+            <resource>
+                <directory>src/main/resources/props</directory>
+                <targetPath>props</targetPath>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>props</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
+    <profiles>
+        <profile>
+            <!-- 开发环境配置 -->
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 测试环境配置 -->
+            <id>uat</id>
+            <activation>
+            </activation>
+            <properties>
+                <env>uat</env>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 预生产环境配置 -->
+            <id>pre</id>
+            <properties>
+                <env>pre</env>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 生产环境配置 -->
+            <id>live</id>
+            <properties>
+                <env>live</env>
+            </properties>
+        </profile>
+    </profiles>
 </project>

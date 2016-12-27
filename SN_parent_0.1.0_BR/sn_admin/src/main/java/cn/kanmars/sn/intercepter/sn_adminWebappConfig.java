@@ -1,4 +1,4 @@
-package cn.kanmars.sn.mvcconf;
+package cn.kanmars.sn.intercepter;
 
 import cn.kanmars.sn.intercepter.SessionInterceptor;
 import cn.kanmars.sn.intercepter.SqlAttackInterceptor;

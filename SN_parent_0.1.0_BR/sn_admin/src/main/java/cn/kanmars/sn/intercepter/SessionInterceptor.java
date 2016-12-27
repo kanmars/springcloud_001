@@ -39,6 +39,10 @@ public class SessionInterceptor implements HandlerInterceptor,ApplicationContext
         String[] userLoginBean = this.allowUrls;
         int goUrl = userLoginBean.length;
 
+        request.getSession().setAttribute("dicSelect", DicSelect.getInstance());
+        request.getSession().setAttribute("dicCheckbox", DicCheckbox.getInstance());
+        request.getSession().setAttribute("dicList", DicList.getInstance());
+
         for(int basePath = 0; basePath < goUrl; ++basePath) {
             String url = userLoginBean[basePath];
             if(uri.contains(url)) {
@@ -61,9 +65,7 @@ public class SessionInterceptor implements HandlerInterceptor,ApplicationContext
             request.setAttribute(CookiesUtils.USER_LOGIN_BEAN, var9);
             request.getSession().setAttribute("user", var9);
             request.getSession().setAttribute("menuList", var9.getMenulist());
-            request.getSession().setAttribute("dicSelect", DicSelect.getInstance());
-            request.getSession().setAttribute("dicCheckbox", DicCheckbox.getInstance());
-            request.getSession().setAttribute("dicList", DicList.getInstance());
+
             //重新设置过期时间，保证用户有操作则不过期，在存入cookie时，不储存menuList，因为menuList极大
             AdvancedUserLoginBean.CookiesUtils.addCookie(var9, response);
             return true;

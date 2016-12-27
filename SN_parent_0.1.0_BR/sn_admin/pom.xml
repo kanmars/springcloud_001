@@ -46,13 +46,6 @@
             <artifactId>commons-tools</artifactId>
             <version>4.0.0</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
@@ -67,21 +60,7 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
                 </exclusion>
             </exclusions>
-            <!--
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-            -->
         </dependency>
-        <!--
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jetty</artifactId>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -116,6 +95,11 @@
             <artifactId>sn_dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>cn.kanmars</groupId>
+            <artifactId>sn_bean</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -136,5 +120,56 @@
                 </configuration>
             </plugin>
         </plugins>
+        <filters>
+            <filter>${profiles.dir}/${env}/SN-admin.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources/props</directory>
+                <targetPath>props</targetPath>
+                <filtering>true</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>props</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
+    <profiles>
+        <!-- 开发环境配置 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <!-- 测试环境配置 -->
+        <profile>
+            <id>uat</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>uat</env>
+            </properties>
+        </profile>
+        <!-- 预发布环境 -->
+        <profile>
+            <id>pre</id>
+            <properties>
+                <env>pre</env>
+            </properties>
+        </profile>
+        <!-- 生产环境 -->
+        <profile>
+            <id>live</id>
+            <properties>
+                <env>live</env>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

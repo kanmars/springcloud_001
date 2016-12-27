@@ -1,15 +1,6 @@
 package cn.kanmars.sn.util;
 
 
-import java.io.Serializable;
-import java.util.Date;
-import java.util.Random;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
-import javax.annotation.PostConstruct;
-
 import cn.com.xcommon.commons.utils.IDCreaterPlusUtils;
 import cn.com.xcommon.frame.exception.SnCommonException;
 import cn.com.xcommon.frame.logger.HLogger;
@@ -18,14 +9,20 @@ import cn.com.xcommon.frame.util.DateUtils;
 import cn.com.xcommon.frame.util.StringUtils;
 import cn.kanmars.sn.dao.TblSysSequenceMapper;
 import cn.kanmars.sn.entity.TblSysSequence;
-import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
-
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.PostConstruct;
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 序列ID生成工具类，使用示例<br>
@@ -48,7 +45,6 @@ import org.springframework.transaction.annotation.Transactional;
         alter table tbl_sys_sequence comment '系统ID表';
  */
 @Transactional
-@Service("sysSequenceUtils")
 public class SysSequenceUtils implements ApplicationContextAware {
 
     private static HLogger logger= LoggerManager.getLoger("SysSequenceUtils");

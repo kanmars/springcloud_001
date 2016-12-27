@@ -1,8 +1,9 @@
-package cn.kanmars.controller;
+package cn.kanmars.sn.controller;
 
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -10,6 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class MainController {
+
+    protected HLogger logger = LoggerManager.getLoger("MainController");
+
     @RequestMapping("/")
     public ModelAndView home(){
         ModelAndView mv = new ModelAndView("index");

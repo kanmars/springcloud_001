@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>cn.kanmars</groupId>
+        <artifactId>sn</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.kanmars</groupId>
+    <artifactId>sn_bean</artifactId>
+    <packaging>jar</packaging>
+
+    <name>sn_bean</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <profiles.dir>src\main\resources\props</profiles.dir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-frame</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-jdbc</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-rpc</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-security</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.com.xcommon</groupId>
+            <artifactId>commons-tools</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.kanmars</groupId>
+            <artifactId>sn_dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+</project>

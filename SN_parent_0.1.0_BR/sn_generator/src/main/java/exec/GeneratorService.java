@@ -101,7 +101,7 @@ public class GeneratorService {
         sb.append("import cn.com.xcommon.frame.util.*;").append("\r\n");
 
         for(Map.Entry e : logics.entrySet()){
-            sb.append("import cn.kanmars.sn.logic."+e.getKey()+";").append("\r\n");
+            sb.append("import cn.kanmars.sn.logic." + FormatUtils.firstBig(e.getKey().toString()) + ";").append("\r\n");
         }
 
         sb.append("import org.springframework.beans.factory.annotation.Autowired;").append("\r\n");
@@ -174,12 +174,14 @@ public class GeneratorService {
             if(hasBody.equalsIgnoreCase("hasBody")){
                     sb.append("        result.put(\"requestBody\", requestBody);").append("\r\n");
             }
+            String[] logic_inservice_array = logics_in_service.split(",");
 
-            for(Map.Entry e : logics.entrySet()){
-                sb.append("        if(!ResultEnum.PartOK.equals(" + FormatUtils.firstSmall(e.getKey().toString()) + ".exec(result))){").append("\r\n");
+            for(String  logic : logic_inservice_array){
+                sb.append("        if(!ResultEnum.PartOK.equals(" + FormatUtils.firstSmall(getName(logic)) + ".exec(result))){").append("\r\n");
                 sb.append("            return result;").append("\r\n");
                 sb.append("        }").append("\r\n");
             }
+
             sb.append("        result.put(\"resCode\",\"0000\");").append("\r\n");
             sb.append("        result.put(\"resDesc\",\"成功\");").append("\r\n");
             sb.append("        logger.info(\""+className+"."+servicename+".end\");").append("\r\n");

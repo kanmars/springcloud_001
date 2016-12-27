@@ -1,4 +1,4 @@
-package cn.kanmars.properties;
+package cn.kanmars.sn.properties;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

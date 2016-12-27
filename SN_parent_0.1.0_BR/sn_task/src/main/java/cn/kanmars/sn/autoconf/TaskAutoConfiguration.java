@@ -1,4 +1,4 @@
-package cn.kanmars.sn.config;
+package cn.kanmars.sn.autoconf;
 
 import cn.com.xcommon.frame.util.SpringBeanFactory;
 import org.springframework.beans.BeansException;
