@@ -1,6 +1,6 @@
 package cn.kanmars.sn.dyndata;
 
-import org.apache.commons.lang.StringUtils;
+import cn.com.xcommon.frame.util.StringUtils;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
