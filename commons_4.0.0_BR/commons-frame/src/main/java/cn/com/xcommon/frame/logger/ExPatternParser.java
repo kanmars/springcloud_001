@@ -45,25 +45,47 @@ public class ExPatternParser extends PatternParser {
 	 * @author Captain
 	 * 
 	 */
-	private static class ThreadNumber extends PatternConverter {
+	public static class ThreadNumber extends PatternConverter {
+
+		private static ThreadLocal<String> threadNumberInThreadLocal = new ThreadLocal<String>();
 
 		public ThreadNumber(FormattingInfo fi) {
 			super(fi);
 		}
 
+		/**
+		 * 重写convert方法，当使用%T时，输出线程号或者全局业务编号
+		 * @param event
+		 * @return
+		 */
 		protected String convert(LoggingEvent event) {
-
-			int hashCode = Thread.currentThread().hashCode();
-			if (hashCode < 0) {
-				hashCode = -hashCode;
-			}
-
-			String hashCode2 = Integer.toString(hashCode);
-			hashCode2 = Utils.fillString(hashCode2, '0', 10, false);
-
-			return hashCode2;
+			return getThreadNumber();
 		}
 
+		/**
+		 * 用于切换线程号
+		 * @param threadNumber
+		 */
+		public static void setThreadNumber(String threadNumber){
+			threadNumberInThreadLocal.set(threadNumber);
+		}
+		/**
+		 * 用于获取当前的线程号
+		 */
+		public static String getThreadNumber(){
+			String threadNumber = threadNumberInThreadLocal.get();
+			if(threadNumber==null){
+				int hashCode = Thread.currentThread().hashCode();
+				if (hashCode < 0) {
+					hashCode = -hashCode;
+				}
+				String hashCode2 = Integer.toString(hashCode);
+				hashCode2 = Utils.fillString(hashCode2, '0', 10, false);
+				threadNumberInThreadLocal.set(hashCode2);
+				threadNumber = hashCode2;
+			}
+			return threadNumber;
+		}
 	}
 
 	/**

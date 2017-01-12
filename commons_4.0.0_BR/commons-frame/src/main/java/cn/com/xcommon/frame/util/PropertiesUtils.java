@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author baolong
  *
  */
+@Deprecated
 public class PropertiesUtils {
 
 	private static final ConcurrentHashMap<String, Properties> map = new ConcurrentHashMap<String, Properties>();

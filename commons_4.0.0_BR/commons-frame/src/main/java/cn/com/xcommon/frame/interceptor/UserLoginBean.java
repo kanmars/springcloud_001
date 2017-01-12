@@ -150,11 +150,18 @@ public class UserLoginBean implements Serializable {
 	}
 
 	public static class CookiesUtils {
-		public static final String key = "ADVANCE_USER_LOGIN_BEAN";
+		//可修改
+		private static String key = "ADVANCE_USER_LOGIN_BEAN";
 		public static final String charset = "UTF-8";
 		public static final Integer cookieOverdue = 3600;
 
 		public CookiesUtils() {
+
+		}
+		//用于不同系统的cookie的key值不同的情况
+		//禁止同一系统使用两个不同的cookie，因此不考虑并发问题
+		public static void initKey(String targetKey){
+			key = targetKey;
 		}
 
 		public static boolean addCookie(UserLoginBean userLoginBean, HttpServletResponse response) {

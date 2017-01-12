@@ -5,11 +5,10 @@ import java.text.DecimalFormat;
 
 public class MoneyFormatUtils {
 
-	private static DecimalFormat df = new DecimalFormat();
 	private static final BigDecimal baseNum = new BigDecimal(100);
 
 	public static String format(String value, String formatStyle, String formatType) {
-
+		DecimalFormat df = new DecimalFormat();
 		BigDecimal bg = new BigDecimal(value);
 		if ("f2y".equals(formatType)) {
 			bg = bg.divide(baseNum);
@@ -23,6 +22,7 @@ public class MoneyFormatUtils {
 	}
 	
 	public static String format(BigDecimal value, String formatStyle, String formatType) {
+		DecimalFormat df = new DecimalFormat();
 		if ("f2y".equals(formatType)) {
 			value = value.divide(baseNum);
 		} else if ("y2f".equals(formatType)) {

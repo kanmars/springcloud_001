@@ -297,22 +297,7 @@ public class StringUtils {
 		}
 		return result;
 	}
-	/**
-	 * 重新设置日期格式形式
-	 * yyyy-MM-dd HH:mm:ss
-	 * 转成
-	 * yyyyMMddHHmmss
-	 * @param p_map
-	 * @return
-	 */
-	public static String dateTransFormat( String p_str_format){
-		String format = trim(p_str_format);
-		format = format.replaceAll("-", "")
-				.replaceAll(" ", "")
-				.replaceAll(":", "");
-		return format ;
-	}
-	
+
 	/**
 	 * 重新组建参数
 	 * @param p_map
@@ -369,14 +354,14 @@ public class StringUtils {
 	public static boolean isMobile(String pMobile) {
 		boolean result = false;
 		String mRegMobile = "^((1[3|8][0-9])|(14[5|7])|(15[^4,\\D])|(17[0|5|6|7|8]))\\d{8}$";
-		
+
 		if (!isEmpty(pMobile)) {
 			Pattern p = Pattern.compile(mRegMobile);
 			result = p.matcher(pMobile).matches();
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 混淆手机号，目前与EC的混淆规则相同
 	 * @param pMobile

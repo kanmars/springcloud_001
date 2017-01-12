@@ -17,18 +17,20 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 /**
  * @ClassName: SqlAttackFilter
- * @Description: 防止SQL注入的过虑器
+ * @Description: 防止SQL注入的过滤器
  * @date 2015年2月6日 下午8:02:47
  */
 public class SqlAttackFilter implements Filter {
 
-	private static final Log logger = LogFactory.getLog("SqlAbnormalFilter");
+	protected HLogger logger = LoggerManager.getLoger("SqlAttackFilter");
 
 	private String rules = "[^%'=]{1,}";
 

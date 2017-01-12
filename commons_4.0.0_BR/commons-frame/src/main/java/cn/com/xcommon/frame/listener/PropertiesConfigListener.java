@@ -17,9 +17,10 @@ import cn.com.xcommon.frame.logger.LoggerManager;
 
 /**
  * @ClassName: PropertiesConfigListener
- * @Description: 配置文件加载监听器
+ * @Description: 配置文件加载监听器，一般各自项目自行实现，此类仅为参考
  * @date 2015年2月27日 上午11:56:29
  */
+@Deprecated
 public class PropertiesConfigListener implements ServletContextListener {
 
 	private HLogger logger = LoggerManager.getLoger("PropertiesConfigListener");

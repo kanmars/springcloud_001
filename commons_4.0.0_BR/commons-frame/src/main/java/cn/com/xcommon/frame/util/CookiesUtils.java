@@ -18,65 +18,46 @@ import cn.com.xcommon.frame.interceptor.UserLoginBean;
  */
 public class CookiesUtils {
 
-	public static String key = "finance_user";
-
 	public static String charset = "UTF-8";
 
 	public static String USER_LOGIN_BEAN = "userLoginBean";
 
-	public static int cookieOverdue = ApplicationCache.getInstance().getInt("cookieOverdue");
+	public static int cookieOverdue = -1;
 
-	public static boolean addCookie(UserLoginBean userLoginBean, HttpServletResponse response) {
-		try {
-			JSONObject json = JSONObject.fromObject(userLoginBean);
-			String content = Base64Util.encodeMessage(json.toString().getBytes(charset));
-			Cookie cookie = new Cookie(key, content);
-			cookie.setPath("/");
-			cookie.setMaxAge(cookieOverdue);
-			response.addCookie(cookie);
-			return true;
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
-
-	public static UserLoginBean getCookie(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			Cookie[] cookies = request.getCookies();
-			if (cookies != null) {
-				Cookie userCookie = null;
-				for (Cookie cookie : cookies) {
-					if (cookie.getName().equals(key)) {
-						userCookie = cookie;
-						if (request.getServerName().equals(cookie.getDomain())) {
-							break;
-						}
-					}
-				}
-				if (userCookie != null) {
-					String value = userCookie.getValue();
-					value = new String(Base64Util.decodeMessage(value), charset);
-					userCookie.setPath("/");
-					userCookie.setMaxAge(cookieOverdue);
-					response.addCookie(userCookie);
-					JSONObject jSONObject = JSONObject.fromObject(value);
-					UserLoginBean userLoginBean = (UserLoginBean) JSONObject.toBean(jSONObject, UserLoginBean.class);
-					return userLoginBean;
-				}
+	static{
+		String cookieOverdue_s = ApplicationCache.getInstance().getStr("cookieOverdue");
+		if(StringUtils.isNotEmpty(cookieOverdue_s)){
+			try {
+				cookieOverdue = Integer.parseInt(cookieOverdue_s);
+			}catch (Exception e){
+				e.printStackTrace();
 			}
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
 		}
-		return null;
 	}
 
-	public static boolean delCookie(HttpServletRequest request, HttpServletResponse response) {
+	public void addCookie(HttpServletRequest request,HttpServletResponse response,String name, String value) {
+		Cookie cookies = new Cookie(name, value);
+		cookies.setPath("/");
+//      cookies.setMaxAge(-1);//设置cookie经过多长秒后被删除。如果0，就说明立即删除。如果是负数就表明当浏览器关闭时自动删除。
+		cookies.setMaxAge(cookieOverdue);
+		response.addCookie(cookies);
+	}
+	public String getCookieValue(HttpServletRequest request,HttpServletResponse response,String name) {
+		if (StringUtils.isNotEmpty(name)) {
+			Cookie cookie = getCookie(request,response,name);
+			if(cookie!=null){
+				return cookie.getValue();
+			}
+		}
+		return "";
+	}
+
+	public static void delCookie(HttpServletRequest request, HttpServletResponse response,String name) {
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			Cookie userCookie = null;
 			for (Cookie cookie : cookies) {
-				if (cookie.getName().equals(key)) {
+				if (cookie.getName().equals(name)) {
 					userCookie = cookie;
 					if (request.getServerName().equals(cookie.getDomain())) {
 						break;
@@ -89,7 +70,24 @@ public class CookiesUtils {
 				response.addCookie(userCookie);
 			}
 		}
-		return false;
+	}
+
+	public Cookie getCookie(HttpServletRequest request,HttpServletResponse response,String cookieName){
+		Cookie[] cookies = request.getCookies();
+		Cookie cookie = null;
+		try {
+			if (cookies != null && cookies.length > 0) {
+				for (int i = 0; i < cookies.length; i++) {
+					cookie = cookies[i];
+					if (cookie.getName().equals(cookieName)) {
+						return cookie;
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return cookie;
 	}
 
 }

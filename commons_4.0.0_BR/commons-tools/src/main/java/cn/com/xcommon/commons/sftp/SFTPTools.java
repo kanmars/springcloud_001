@@ -44,7 +44,7 @@ public class SFTPTools {
 	
 	/**
 	 * 链接sftp服务器
-	 * @param host
+	 * @param hostname
 	 * @param port
 	 * @param username
 	 * @param password
@@ -73,7 +73,7 @@ public class SFTPTools {
 	
 	/**
 	 * 关闭sftp服务器
-	 * @param sshSession
+	 * @param channelSftp
 	 */
 	public  static void closeChannelSftp(ChannelSftp channelSftp){
 		Session sshSession=null;

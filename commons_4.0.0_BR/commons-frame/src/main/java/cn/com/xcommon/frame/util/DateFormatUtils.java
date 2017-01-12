@@ -22,7 +22,7 @@ public class DateFormatUtils {
 		if(format.equals("yyyyMMdd")){
 			return new SimpleDateFormat("yyyyMMdd");
 		}
-//		formatMap.put("yyyy", yyyy);	1	 new SimpleDateFormat("yyyy");		
+//		formatMap.put("yyyy", yyyy);	1	 new SimpleDateFormat("yyyy");
 		if(format.equals("yyyy")){
 			return new SimpleDateFormat("yyyy");
 		}
@@ -86,7 +86,8 @@ public class DateFormatUtils {
 		if(format.equals("yyyyMMddHHmmss_IU")){
 			return new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		}
-		return null;
+		//当都不符合时，直接返回format
+		return new SimpleDateFormat(format);
 	}
 
 	/**
@@ -162,28 +163,6 @@ public class DateFormatUtils {
 	}
 	
 	/**
-	 * 计算一个时间加上或者减去一个秒后所得的时间
-	 * @param time	yyyyMMddHHmmss
-	 * @param second
-	 * @return
-	 */
-	public static String countTime(String time, int second) {
-
-		String nextTime = null;
-
-		try {
-			SimpleDateFormat tstDate = getDateFormate("yyyyMMddHHmmss");
-			Date tstdate1 = tstDate.parse(time);
-			Calendar rightNow = Calendar.getInstance();
-			rightNow.setTime(tstdate1);
-			rightNow.add(Calendar.SECOND, second);
-			nextTime = tstDate.format(rightNow.getTime());
-		}catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return nextTime;
-	}
-	/**
 	 *
 	 * 计算一个日期加上或者减去一个日期数后所得的日期
 	 * @param currDate
@@ -205,28 +184,5 @@ public class DateFormatUtils {
 		}
 		return nextDate;
 
-	}
-	
-	/**
-	 *
-	 * 计算一个月份加上或者减去一个月数后所得的月份
-	 * @param currMonth
-	 * @param month
-	 * @return
-	 */
-
-	public static String countMonth(String currMonth, int month) {
-		String nextMonth = null;
-		try {
-			SimpleDateFormat tstDate = getDateFormate("yyyyMM");
-			Date tstdate1 = tstDate.parse(currMonth);
-			Calendar rightNow = Calendar.getInstance();
-			rightNow.setTime(tstdate1);
-			rightNow.add(Calendar.MONTH, month);
-			nextMonth = tstDate.format(rightNow.getTime());
-		}catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return nextMonth;
 	}
 }

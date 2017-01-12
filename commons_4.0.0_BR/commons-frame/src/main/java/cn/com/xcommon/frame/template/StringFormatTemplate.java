@@ -3,8 +3,6 @@ package cn.com.xcommon.frame.template;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.com.xcommon.frame.util.StringFormatUtils;
-
 import freemarker.template.TemplateMethodModel;
 import freemarker.template.TemplateModelException;
 
@@ -34,13 +32,28 @@ public class StringFormatTemplate implements TemplateMethodModel {
 			String formatType = (String) arguments.get(2);
 			String retType = (String) arguments.get(1);
 			if ("isNull".equals(formatType)) {
-				return StringFormatUtils.isNull(value, retType);
+				return isNull(value, retType);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return defaultStr;
 	}
+
+	public static Object isNull(String value, String retType) {
+		if (value.isEmpty() && "String".equals(retType)) {
+			return "";
+		} else if (value.isEmpty() && "Boolean".equals(retType)) {
+			return true;
+		} else if (!value.isEmpty() && "String".equals(retType)) {
+			return value;
+		} else if (!value.isEmpty() && "Boolean".equals(retType)) {
+			return false;
+		} else {
+			return value;
+		}
+	}
+
 
 	public static void main(String[] args) throws TemplateModelException {
 

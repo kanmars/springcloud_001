@@ -10,6 +10,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -19,7 +21,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class FluxAttackFilter implements Filter {
 
-	private static final Log logger = LogFactory.getLog("SqlAbnormalFilter");
+	protected HLogger logger = LoggerManager.getLoger("FluxAttackFilter");
 
 	private String sendRedirect;
 

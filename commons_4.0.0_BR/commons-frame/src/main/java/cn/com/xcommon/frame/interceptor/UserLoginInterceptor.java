@@ -27,7 +27,7 @@ public class UserLoginInterceptor implements HandlerInterceptor {
 				return true;
 		}
 
-		UserLoginBean userLoginBean = CookiesUtils.getCookie(request, response);
+		UserLoginBean userLoginBean = UserLoginBean.CookiesUtils.getCookie(request, response);
 		if (userLoginBean == null) {
 			String goUrl = request.getRequestURI();
 			goUrl = goUrl.replace(request.getContextPath(), "");

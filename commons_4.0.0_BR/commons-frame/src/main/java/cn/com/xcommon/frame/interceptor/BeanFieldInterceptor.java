@@ -7,6 +7,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.com.xcommon.frame.logger.HLogger;
+import cn.com.xcommon.frame.logger.LoggerManager;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,7 +24,7 @@ import cn.com.xcommon.frame.util.PropertiesUtils;
  */
 public class BeanFieldInterceptor implements HandlerInterceptor {
 
-	private static final Log logger = LogFactory.getLog("BeanFieldInterceptor");
+	protected HLogger logger = LoggerManager.getLoger("BeanFieldInterceptor");
 
 	private String rules = "[^%'=]{1,}";
 
