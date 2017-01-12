@@ -7,7 +7,6 @@ D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\utils\BasisConstants.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\service\impl\ChildJobTimerRunImpl.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\bean\DieTaskOpenConfig.java
-D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\config\TaskAutoConfiguration.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\service\impl\TaskRegisterServiceImpl.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\service\TimerBuildService.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\service\impl\TaskConfigRunImpl.java
@@ -18,6 +17,7 @@ D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\factory\ChildTaskRunFactory.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\service\TaskListenerService.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\factory\TaskDeadlockListener.java
+D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\autoconf\BeansAutoConfiguration.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\service\TaskRegisterService.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\TaskApplication.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\service\impl\TaskDeadlockRunImpl.java
@@ -27,3 +27,4 @@ D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\dao\impl\TaskInfoDAOImpl.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\cache\SystemConfigInfoCache.java
 D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\utils\GlobalTaskInfoUtils.java
+D:\computer\springcloud_001\SN_parent_0.1.0_BR\sn_task\src\main\java\cn\kanmars\sn\autoconf\TaskAutoConfiguration.java

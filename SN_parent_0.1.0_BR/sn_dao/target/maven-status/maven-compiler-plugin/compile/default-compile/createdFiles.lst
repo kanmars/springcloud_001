@@ -16,7 +16,6 @@ cn\kanmars\sn\entity\TblSysDic.class
 cn\kanmars\sn\entity\TblFileInfo.class
 cn\kanmars\sn\dao\TblSysuserRoleInfoMapper.class
 cn\kanmars\sn\dao\tddldao\TblUserInfoSerMapper.class
-cn\kanmars\sn\util\P6SpyLog.class
 cn\kanmars\sn\rule\MyTbRule.class
 cn\kanmars\sn\entity\TblSysuserInfo.class
 cn\kanmars\sn\rule\MyDbRule.class
@@ -31,7 +30,6 @@ cn\kanmars\sn\dao\TblSysSequenceMapper.class
 cn\kanmars\sn\rule\Shard.class
 cn\kanmars\sn\dyndata\DynamicDataSourceContextHolder.class
 cn\kanmars\sn\dao\TblSysuserInfoMapper.class
-cn\kanmars\sn\util\P6SpyLog$1.class
 cn\kanmars\sn\entity\UserInfo.class
 cn\kanmars\sn\dao\TblSysDicMapper.class
 cn\kanmars\sn\dao\TblSysroleMenuInfoMapper.class
@@ -39,4 +37,6 @@ cn\kanmars\sn\util\PageQueryUtil.class
 cn\kanmars\sn\dyndata\DynamicDataSource.class
 cn\kanmars\sn\entity\TblSysroleMenuInfoKey.class
 cn\kanmars\sn\dyndata\annotation\DynamicDataSourceMethod.class
+cn\kanmars\sn\entity\TblOperationLog.class
 cn\kanmars\sn\rule\MyRule.class
+cn\kanmars\sn\dao\TblOperationLogMapper.class

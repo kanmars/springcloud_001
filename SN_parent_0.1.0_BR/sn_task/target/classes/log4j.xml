@@ -5,7 +5,7 @@
 	<loggerConfiger>
 		<properties>
 			<!-- 是否打印日志 -->
-			<propertie name="log.env">${env}</propertie>
+			<propertie name="log.env">env</propertie>
 			<!-- 是否打印日志 -->
 			<propertie name="log.flag">true</propertie>
 			<!-- 日志级别 -->
@@ -22,7 +22,7 @@
 				%F：输出语句所在的文件名
 				%-数字：表示该项的最小长度，如果不够，则用空格填充
 			-->
-			<propertie name="log.logout.conversionpattern"><![CDATA[[%T][%P][%d{yyyyMMdd HHmmss,SSS}][%f{25}:%N] %m%n]]></propertie>
+			<propertie name="log.logout.conversionpattern"><![CDATA[[%T][%P][%d{yyyyMMdd HHmmss,SSS}][%f{25}] %m%n]]></propertie>
 			<!-- 日志ID长度 -->
 			<propertie name="log.id.length">10</propertie>
 			<!-- 单个日志文件大小 -->

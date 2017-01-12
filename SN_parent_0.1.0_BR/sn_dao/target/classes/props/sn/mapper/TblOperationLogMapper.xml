@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.sn.dao.TblOperationLogMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.sn.entity.TblOperationLog">
+        <constructor>
+            <idArg column="operation_id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="operation_user" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="operation_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="operation_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="operation_desc" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="operation_app" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="operation_classmethod" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="operation_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="update_time" javaType="java.lang.String" jdbcType="CHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        operation_id,operation_user,operation_time,operation_name,operation_desc,operation_app,operation_classmethod,operation_info,create_time,update_time
+    </sql>
+    <select id="select" parameterType="cn.kanmars.sn.entity.TblOperationLog" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_operation_log
+        where 1=1
+        <if test="operationId != null and operationId != '' ">
+            and operation_id = #{operationId,jdbcType=DECIMAL}
+        </if>
+        <if test="operationUser != null and operationUser != '' ">
+            and operation_user = #{operationUser,jdbcType=VARCHAR}
+        </if>
+        <if test="operationTime != null and operationTime != '' ">
+            and operation_time = #{operationTime,jdbcType=CHAR}
+        </if>
+        <if test="operationName != null and operationName != '' ">
+            and operation_name = #{operationName,jdbcType=VARCHAR}
+        </if>
+        <if test="operationDesc != null and operationDesc != '' ">
+            and operation_desc = #{operationDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="operationApp != null and operationApp != '' ">
+            and operation_app = #{operationApp,jdbcType=VARCHAR}
+        </if>
+        <if test="operationClassmethod != null and operationClassmethod != '' ">
+            and operation_classmethod = #{operationClassmethod,jdbcType=VARCHAR}
+        </if>
+        <if test="operationInfo != null and operationInfo != '' ">
+            and operation_info = #{operationInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.sn.entity.TblOperationLog" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_operation_log
+        where 1=1
+        <if test="operationId != null and operationId != '' ">
+            and operation_id = #{operationId,jdbcType=DECIMAL}
+        </if>
+        <if test="operationUser != null and operationUser != '' ">
+            and operation_user = #{operationUser,jdbcType=VARCHAR}
+        </if>
+        <if test="operationTime != null and operationTime != '' ">
+            and operation_time = #{operationTime,jdbcType=CHAR}
+        </if>
+        <if test="operationName != null and operationName != '' ">
+            and operation_name = #{operationName,jdbcType=VARCHAR}
+        </if>
+        <if test="operationDesc != null and operationDesc != '' ">
+            and operation_desc = #{operationDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="operationApp != null and operationApp != '' ">
+            and operation_app = #{operationApp,jdbcType=VARCHAR}
+        </if>
+        <if test="operationClassmethod != null and operationClassmethod != '' ">
+            and operation_classmethod = #{operationClassmethod,jdbcType=VARCHAR}
+        </if>
+        <if test="operationInfo != null and operationInfo != '' ">
+            and operation_info = #{operationInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.sn.entity.TblOperationLog" >
+        insert into tbl_operation_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="operationId != null ">
+                operation_id,
+            </if>
+            <if test="operationUser != null ">
+                operation_user,
+            </if>
+            <if test="operationTime != null ">
+                operation_time,
+            </if>
+            <if test="operationName != null ">
+                operation_name,
+            </if>
+            <if test="operationDesc != null ">
+                operation_desc,
+            </if>
+            <if test="operationApp != null ">
+                operation_app,
+            </if>
+            <if test="operationClassmethod != null ">
+                operation_classmethod,
+            </if>
+            <if test="operationInfo != null ">
+                operation_info,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="updateTime != null ">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="operationId != null ">
+                #{operationId,jdbcType=DECIMAL},
+            </if>
+            <if test="operationUser != null ">
+                #{operationUser,jdbcType=VARCHAR},
+            </if>
+            <if test="operationTime != null ">
+                #{operationTime,jdbcType=CHAR},
+            </if>
+            <if test="operationName != null ">
+                #{operationName,jdbcType=VARCHAR},
+            </if>
+            <if test="operationDesc != null ">
+                #{operationDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="operationApp != null ">
+                #{operationApp,jdbcType=VARCHAR},
+            </if>
+            <if test="operationClassmethod != null ">
+                #{operationClassmethod,jdbcType=VARCHAR},
+            </if>
+            <if test="operationInfo != null ">
+                #{operationInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="updateTime != null ">
+                #{updateTime,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.sn.entity.TblOperationLog" >
+        update tbl_operation_log
+        <set>
+            <if test="operationUser != null">
+                operation_user = #{operationUser,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationTime != null">
+                operation_time = #{operationTime,jdbcType=CHAR} ,
+            </if>
+            <if test="operationName != null">
+                operation_name = #{operationName,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationDesc != null">
+                operation_desc = #{operationDesc,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationApp != null">
+                operation_app = #{operationApp,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationClassmethod != null">
+                operation_classmethod = #{operationClassmethod,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationInfo != null">
+                operation_info = #{operationInfo,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=CHAR} ,
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and operation_id = #{operationId,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.sn.entity.TblOperationLog" >
+        delete from tbl_operation_log
+        where 1=1
+            <if test="operationId != null and operationId != '' ">
+                and operation_id = #{operationId,jdbcType=DECIMAL}
+            </if>
+            <if test="operationUser != null and operationUser != '' ">
+                and operation_user = #{operationUser,jdbcType=VARCHAR}
+            </if>
+            <if test="operationTime != null and operationTime != '' ">
+                and operation_time = #{operationTime,jdbcType=CHAR}
+            </if>
+            <if test="operationName != null and operationName != '' ">
+                and operation_name = #{operationName,jdbcType=VARCHAR}
+            </if>
+            <if test="operationDesc != null and operationDesc != '' ">
+                and operation_desc = #{operationDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="operationApp != null and operationApp != '' ">
+                and operation_app = #{operationApp,jdbcType=VARCHAR}
+            </if>
+            <if test="operationClassmethod != null and operationClassmethod != '' ">
+                and operation_classmethod = #{operationClassmethod,jdbcType=VARCHAR}
+            </if>
+            <if test="operationInfo != null and operationInfo != '' ">
+                and operation_info = #{operationInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="updateTime != null and updateTime != '' ">
+                and update_time = #{updateTime,jdbcType=CHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_operation_log
+        where 1=1
+        <if test="operationId != null and operationId != '' ">
+            and operation_id = #{operationId,jdbcType=DECIMAL}
+        </if>
+        <if test="operationUser != null and operationUser != '' ">
+            and operation_user = #{operationUser,jdbcType=VARCHAR}
+        </if>
+        <if test="operationTime != null and operationTime != '' ">
+            and operation_time = #{operationTime,jdbcType=CHAR}
+        </if>
+        <if test="operationName != null and operationName != '' ">
+            and operation_name = #{operationName,jdbcType=VARCHAR}
+        </if>
+        <if test="operationDesc != null and operationDesc != '' ">
+            and operation_desc = #{operationDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="operationApp != null and operationApp != '' ">
+            and operation_app = #{operationApp,jdbcType=VARCHAR}
+        </if>
+        <if test="operationClassmethod != null and operationClassmethod != '' ">
+            and operation_classmethod = #{operationClassmethod,jdbcType=VARCHAR}
+        </if>
+        <if test="operationInfo != null and operationInfo != '' ">
+            and operation_info = #{operationInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_operation_log
+        where 1=1
+        <if test="operationId != null and operationId != '' ">
+            and operation_id = #{operationId,jdbcType=DECIMAL}
+        </if>
+        <if test="operationUser != null and operationUser != '' ">
+            and operation_user = #{operationUser,jdbcType=VARCHAR}
+        </if>
+        <if test="operationTime != null and operationTime != '' ">
+            and operation_time = #{operationTime,jdbcType=CHAR}
+        </if>
+        <if test="operationName != null and operationName != '' ">
+            and operation_name = #{operationName,jdbcType=VARCHAR}
+        </if>
+        <if test="operationDesc != null and operationDesc != '' ">
+            and operation_desc = #{operationDesc,jdbcType=VARCHAR}
+        </if>
+        <if test="operationApp != null and operationApp != '' ">
+            and operation_app = #{operationApp,jdbcType=VARCHAR}
+        </if>
+        <if test="operationClassmethod != null and operationClassmethod != '' ">
+            and operation_classmethod = #{operationClassmethod,jdbcType=VARCHAR}
+        </if>
+        <if test="operationInfo != null and operationInfo != '' ">
+            and operation_info = #{operationInfo,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_operation_log
+        <set>
+            <if test="operationUser_new != null">
+                operation_user = #{operationUser_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationTime_new != null">
+                operation_time = #{operationTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="operationName_new != null">
+                operation_name = #{operationName_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationDesc_new != null">
+                operation_desc = #{operationDesc_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationApp_new != null">
+                operation_app = #{operationApp_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationClassmethod_new != null">
+                operation_classmethod = #{operationClassmethod_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="operationInfo_new != null">
+                operation_info = #{operationInfo_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="updateTime_new != null">
+                update_time = #{updateTime_new,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="operationId != null ">
+                and operation_id = #{operationId,jdbcType=DECIMAL}
+            </if>
+            <if test="operationUser != null ">
+                and operation_user = #{operationUser,jdbcType=VARCHAR}
+            </if>
+            <if test="operationTime != null ">
+                and operation_time = #{operationTime,jdbcType=CHAR}
+            </if>
+            <if test="operationName != null ">
+                and operation_name = #{operationName,jdbcType=VARCHAR}
+            </if>
+            <if test="operationDesc != null ">
+                and operation_desc = #{operationDesc,jdbcType=VARCHAR}
+            </if>
+            <if test="operationApp != null ">
+                and operation_app = #{operationApp,jdbcType=VARCHAR}
+            </if>
+            <if test="operationClassmethod != null ">
+                and operation_classmethod = #{operationClassmethod,jdbcType=VARCHAR}
+            </if>
+            <if test="operationInfo != null ">
+                and operation_info = #{operationInfo,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="updateTime != null ">
+                and update_time = #{updateTime,jdbcType=CHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_operation_log
+        where 1=1
+        <if test="operationId != null and operationId != '' ">
+            and operation_id = #{operationId,jdbcType=DECIMAL}
+        </if>
+        <if test="operationUser != null and operationUser != '' ">
+            and operation_user like CONCAT(#{operationUser,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="operationTime != null and operationTime != '' ">
+            and operation_time = #{operationTime,jdbcType=CHAR}
+        </if>
+        <if test="operationTime_start != null and operationTime_start != '' ">
+            and operation_time &gt;= #{operationTime_start,jdbcType=CHAR}
+        </if>
+        <if test="operationTime_end != null and operationTime_end != '' ">
+            and operation_time &lt;= #{operationTime_end,jdbcType=CHAR}
+        </if>
+        <if test="operationName != null and operationName != '' ">
+            and operation_name like CONCAT(#{operationName,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="operationDesc != null and operationDesc != '' ">
+            and operation_desc like CONCAT(#{operationDesc,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="operationApp != null and operationApp != '' ">
+            and operation_app like CONCAT(#{operationApp,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="operationClassmethod != null and operationClassmethod != '' ">
+            and operation_classmethod like CONCAT(#{operationClassmethod,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="operationInfo != null and operationInfo != '' ">
+            and operation_info like CONCAT(#{operationInfo,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="createTime_start != null and createTime_start != '' ">
+            and create_time &gt;= #{createTime_start,jdbcType=CHAR}
+        </if>
+        <if test="createTime_end != null and createTime_end != '' ">
+            and create_time &lt;= #{createTime_end,jdbcType=CHAR}
+        </if>
+        <if test="updateTime != null and updateTime != '' ">
+            and update_time = #{updateTime,jdbcType=CHAR}
+        </if>
+        <if test="updateTime_start != null and updateTime_start != '' ">
+            and update_time &gt;= #{updateTime_start,jdbcType=CHAR}
+        </if>
+        <if test="updateTime_end != null and updateTime_end != '' ">
+            and update_time &lt;= #{updateTime_end,jdbcType=CHAR}
+        </if>
+        order by operation_time desc
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_operation_log (operation_id,operation_user,operation_time,operation_name,operation_desc,operation_app,operation_classmethod,operation_info,create_time,update_time) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.operationId},#{item.operationUser},#{item.operationTime},#{item.operationName},#{item.operationDesc},#{item.operationApp},#{item.operationClassmethod},#{item.operationInfo},#{item.createTime},#{item.updateTime}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_operation_log
+            <set>
+                <if test="item.operationUser_new != null">
+                    operation_user = #{item.operationUser_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.operationTime_new != null">
+                    operation_time = #{item.operationTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.operationName_new != null">
+                    operation_name = #{item.operationName_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.operationDesc_new != null">
+                    operation_desc = #{item.operationDesc_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.operationApp_new != null">
+                    operation_app = #{item.operationApp_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.operationClassmethod_new != null">
+                    operation_classmethod = #{item.operationClassmethod_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.operationInfo_new != null">
+                    operation_info = #{item.operationInfo_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.updateTime_new != null">
+                    update_time = #{item.updateTime_new,jdbcType=CHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.operationId != null ">
+                    and operation_id = #{item.operationId,jdbcType=DECIMAL}
+                </if>
+                <if test="item.operationUser != null ">
+                    and operation_user = #{item.operationUser,jdbcType=VARCHAR}
+                </if>
+                <if test="item.operationTime != null ">
+                    and operation_time = #{item.operationTime,jdbcType=CHAR}
+                </if>
+                <if test="item.operationName != null ">
+                    and operation_name = #{item.operationName,jdbcType=VARCHAR}
+                </if>
+                <if test="item.operationDesc != null ">
+                    and operation_desc = #{item.operationDesc,jdbcType=VARCHAR}
+                </if>
+                <if test="item.operationApp != null ">
+                    and operation_app = #{item.operationApp,jdbcType=VARCHAR}
+                </if>
+                <if test="item.operationClassmethod != null ">
+                    and operation_classmethod = #{item.operationClassmethod,jdbcType=VARCHAR}
+                </if>
+                <if test="item.operationInfo != null ">
+                    and operation_info = #{item.operationInfo,jdbcType=VARCHAR}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=CHAR}
+                </if>
+                <if test="item.updateTime != null ">
+                    and update_time = #{item.updateTime,jdbcType=CHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_operation_log
+        where 1=1
+        and operation_id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

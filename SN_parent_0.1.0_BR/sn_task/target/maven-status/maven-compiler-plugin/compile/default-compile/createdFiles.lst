@@ -16,6 +16,8 @@ cn\kanmars\sn\factory\ChildTaskRunFactory.class
 cn\kanmars\sn\service\TaskListenerService.class
 cn\kanmars\sn\utils\TaskTrigerUtils.class
 cn\kanmars\sn\logic\impl\SyncProductDetailLockLogic.class
+cn\kanmars\sn\autoconf\BeansAutoConfiguration.class
+cn\kanmars\sn\autoconf\TaskAutoConfiguration.class
 cn\kanmars\sn\service\impl\TaskRegisterServiceImpl$1.class
 cn\kanmars\sn\utils\TaskTrigerUtils$1.class
 cn\kanmars\sn\bean\DieTaskOpenConfig.class
@@ -23,7 +25,6 @@ cn\kanmars\sn\bean\SiteChildTask.class
 cn\kanmars\sn\utils\GlobalTaskInfoUtils.class
 cn\kanmars\sn\bean\TaskBasicConfig.class
 cn\kanmars\sn\dao\impl\TaskInfoDAOImpl.class
-cn\kanmars\sn\config\TaskAutoConfiguration.class
 cn\kanmars\sn\dao\TaskInfoDAO.class
 cn\kanmars\sn\service\impl\TaskRegisterServiceImpl.class
 cn\kanmars\sn\service\TimerBuildService.class
