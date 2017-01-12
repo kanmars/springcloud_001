@@ -45,17 +45,23 @@ public class DynamicDataSourceAspect implements ApplicationContextAware {
     public void changeDataSource(JoinPoint point, DynamicDataSourceMethod dynamicDataSourceMethod) throws Throwable {
         logger.debug("切换数据源");
         //获取当前的指定的数据源;
-        int idx = dynamicDataSourceMethod.partionKeyIndex();
-        String paramName = dynamicDataSourceMethod.partionKeyParamName();
-        String value = dynamicDataSourceMethod.value();
-        if(StringUtils.isEmpty(value)){
+        int[] idx = dynamicDataSourceMethod.partionKeyIndex();
+        String[] paramName = dynamicDataSourceMethod.partionKeyParamName();
+        String router = dynamicDataSourceMethod.routerBeanName();
+        if(StringUtils.isEmpty(router)){
             throw new RuntimeException("使用DynamicDataSource时，必须设置value属性为实现了DynamicDataSourceRouter的bean的name!");
         }
 
-        Object partionKey = null;
-        if(idx!=-1){
-            partionKey = point.getArgs()[idx];
-        }else if(StringUtils.isNotEmpty(paramName)){
+        Object[] partionKeys = null;
+        if(idx.length!=0){
+            partionKeys = new Object[idx.length];
+            for(int i=0;i<idx.length;i++){
+                if(idx[i]>idx.length-1){
+                    throw new RuntimeException("使用DynamicDataSource时，partionKey值为["+idx[i]+"],但参数下标最大为["+(idx.length-1)+"]");
+                }
+                partionKeys[i]=point.getArgs()[idx[i]];
+            }
+        }else if(paramName.length!=0){
             //获取参数名称列表
             String classType = point.getTarget().getClass().getName();
             Class<?> clazz = getClazz(classType);
@@ -63,24 +69,30 @@ public class DynamicDataSourceAspect implements ApplicationContextAware {
             String clazzSimpleName = clazz.getSimpleName();
             String methodName = point.getSignature().getName();
             String[] paramNames = getFieldsName(this.getClass(), clazzName, methodName);
-            idx = -1;
-            for(int i=0;i<paramNames.length;i++){
-                if(paramNames[i].equals(paramName.trim())){
-                    idx = i;
-                    break;
+
+            partionKeys = new Object[paramName.length];
+            for(int i=0;i<paramName.length;i++){//注解中的每个参数名
+                boolean hasParam = false;
+                for(int j=0;j<paramNames.length;j++){//目标方法中的参数名
+                    if(paramNames[i].trim().equals(paramName[i].trim())){//目标方法中的参数名
+                        hasParam = true;
+                        partionKeys[i]=point.getArgs()[j];
+                        break;
+                    }
+                }
+                if(!hasParam){
+                    throw new RuntimeException("使用DynamicDataSource时，partionKeyParamName值为["+paramName[i].trim()+"],但未找到此参数");
                 }
             }
-            if(idx == -1){
-                throw new RuntimeException("paramName["+paramName+"]对应的参数在["+methodName+"]中不存在!");
-            }
-            partionKey = point.getArgs()[idx];
+        }else{
+            throw new RuntimeException("使用DynamicDataSource时，必须设置partionKeyIndex或者partionKeyParamName");
         }
-        logger.debug("使用DynamicDataSourceRouter["+value+"]");
-        DynamicDataSourceRouter router = (DynamicDataSourceRouter)ac.getBean(value);
-        if(router==null){
-            throw new RuntimeException("value["+value+"]对应的DynamicDataSourceRouter中不存在!");
+        logger.debug("使用DynamicDataSourceRouter["+router+"]");
+        DynamicDataSourceRouter dynamicDataSourceRouter = (DynamicDataSourceRouter)ac.getBean(router);
+        if(dynamicDataSourceRouter==null){
+            throw new RuntimeException("value["+router+"]对应的DynamicDataSourceRouter中不存在!");
         }
-        String dataSourcename = router.router(partionKey);
+        String dataSourcename = dynamicDataSourceRouter.router(partionKeys);
         logger.debug("使用数据源["+dataSourcename+"]");
         DynamicDataSourceContextHolder.setDataSourceType(dataSourcename);
     }

@@ -12,7 +12,7 @@ public DynamicDataSourceRouter create(){
 /*
  * 查询信息
  */
-@DynamicDataSourceMethod(partionKeyIndex = 0,value="kkk")
+@DynamicDataSourceMethod(partionKeyIndex = {0},routerBeanName="kkk")
 public TblSysmenuInfo querySysmenuInfo(TblSysmenuInfo tblSysmenuInfo) throws Exception {
     logger.debug("querySysmenuInfo:start");
     logger.debug("传入参数:tblSysmenuInfo:" + (tblSysmenuInfo != null ? JSONObject.fromObject(tblSysmenuInfo).toString() : "null"));
@@ -24,3 +24,5 @@ public TblSysmenuInfo querySysmenuInfo(TblSysmenuInfo tblSysmenuInfo) throws Exc
 
 任何一个方法加上了DynamicDataSourceMethod注解，在执行此方法之前会根据partionKeyIndex代表的参数序号，用value代表的DynamicDataSourceRouter对象选择数据源，
 优先级在事务处理之前，因此可以实现分库分表功能
+
+partionKeyIndex为数组，会将index指定的参数(或参数列表)作为分区key传入DynamicDataSourceAspect进行处理，最终传入DynamicDataSourceRouter

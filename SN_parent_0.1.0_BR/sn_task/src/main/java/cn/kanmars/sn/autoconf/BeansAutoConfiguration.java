@@ -1,5 +1,6 @@
 package cn.kanmars.sn.autoconf;
 
+import cn.kanmars.sn.aspect.OperationLogAspect;
 import cn.kanmars.sn.util.SysDicUtils;
 import cn.kanmars.sn.util.SysSequenceUtils;
 import org.springframework.beans.BeansException;
@@ -33,5 +34,12 @@ public class BeansAutoConfiguration implements ApplicationContextAware {
         SysSequenceUtils sysSequenceUtils = new SysSequenceUtils();
         sysSequenceUtils.setApplicationContext(ac);
         return sysSequenceUtils;//返回后再根据@PostConstruct标签进行初始化
+    }
+
+    @Bean("operationLogAspect")
+    public OperationLogAspect getOperationLogAspect(){
+        //日志切面
+        OperationLogAspect operationLogAspect = new OperationLogAspect();
+        return operationLogAspect;
     }
 }

@@ -33,13 +33,13 @@
 	<modules>
         <module>sn_configserver</module>
         <module>sn_eurekaserver</module>
-        <module>sn_service</module>
         <module>sn_dao</module>
+        <module>sn_bean</module>
+        <module>sn_service</module>
         <module>sn_admin</module>
         <module>sn_task</module>
         <module>sn_generator</module>
         <module>sn_web</module>
         <module>sn_zuul</module>
-        <module>sn_bean</module>
     </modules>
 </project>

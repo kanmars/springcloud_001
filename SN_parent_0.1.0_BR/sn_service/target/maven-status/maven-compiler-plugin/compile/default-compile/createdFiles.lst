@@ -1,0 +1,9 @@
+cn\kanmars\sn\service\ServiceAFacadeService.class
+cn\kanmars\sn\feign\ServiceAProductServiceInterFace.class
+cn\kanmars\sn\ServiceApplication.class
+cn\kanmars\sn\properties\sn_serviceProps.class
+cn\kanmars\sn\logic\impl\ALogicImpl.class
+cn\kanmars\sn\logic\ALogic.class
+cn\kanmars\sn\logic\impl\BLogicImpl.class
+cn\kanmars\sn\aspect\ServiceFacadeAspect.class
+cn\kanmars\sn\logic\BLogic.class

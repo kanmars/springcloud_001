@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>神农后台管理系统</title>
+    <title>${systemName!'神农后台管理系统'}</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="${props('resourceUrl')}/css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="${props('resourceUrl')}/css/bootstrap/bootstrapValidator.css">
@@ -30,7 +30,7 @@
   <body>
   	<div class="login-header">
   		<p class="logo-img"></p>
-  		<p class="logo-title">${systemName!''}</p>
+  		<p class="logo-title">${systemName!'神农后台管理系统'}</p>
   	</div>
 	<form action="loginCheck.dhtml" method="post" id="validateLogin">
 	  	<input type="hidden" name="goUrl" value="${goUrl!''}">

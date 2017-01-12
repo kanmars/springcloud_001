@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableFeignClients
 @ComponentScan(basePackages = {"cn.kanmars.sn"})
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-@EnableTransactionManagement
 public class WebApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebApplication.class, args);

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>神农后台管理系统</title>
+		<title>${systemName!'神农后台管理系统'}</title>
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"	name="viewport">
 		<!-- jQuery 2.1.4 -->
 		<#include "/management/resourceofhead.ftl"/>

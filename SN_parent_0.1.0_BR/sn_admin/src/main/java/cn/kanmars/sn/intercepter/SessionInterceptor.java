@@ -1,8 +1,8 @@
 package cn.kanmars.sn.intercepter;
 
 import cn.com.xcommon.frame.cache.ApplicationCache;
+import cn.com.xcommon.frame.interceptor.UserLoginBean;
 import cn.com.xcommon.frame.util.CookiesUtils;
-import cn.kanmars.sn.base.AdvancedUserLoginBean;
 import cn.kanmars.sn.controller.UsersLoginController;
 import cn.kanmars.sn.properties.sn_adminProperties;
 import cn.kanmars.sn.util.DicCheckbox;
@@ -50,7 +50,7 @@ public class SessionInterceptor implements HandlerInterceptor,ApplicationContext
             }
         }
 
-        AdvancedUserLoginBean var9 = AdvancedUserLoginBean.CookiesUtils.getCookie(request, response);
+        UserLoginBean var9 = UserLoginBean.CookiesUtils.getCookie(request, response);
         if(var9 == null) {
             String var11 = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() + sn_adminProperties.getLoginUrl();
             response.sendRedirect(var11);
@@ -67,7 +67,7 @@ public class SessionInterceptor implements HandlerInterceptor,ApplicationContext
             request.getSession().setAttribute("menuList", var9.getMenulist());
 
             //重新设置过期时间，保证用户有操作则不过期，在存入cookie时，不储存menuList，因为menuList极大
-            AdvancedUserLoginBean.CookiesUtils.addCookie(var9, response);
+            UserLoginBean.CookiesUtils.addCookie(var9, response);
             return true;
         }
     }

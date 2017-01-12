@@ -43,6 +43,7 @@ import java.util.concurrent.locks.ReentrantLock;
         ) ENGINE MYISAM;
 
         alter table tbl_sys_sequence comment '系统ID表';
+ * 使用场景：有数据库访问，需要数据生成序列的系统，例如sn-admin,sn-service,sn-task等，严禁sn-web和sn-zuul使用
  */
 @Transactional
 public class SysSequenceUtils implements ApplicationContextAware {

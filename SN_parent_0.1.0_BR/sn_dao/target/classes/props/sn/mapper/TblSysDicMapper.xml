@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.kanmars.sn.dao.TblSysDicMapper">
+    <resultMap id="BaseResultMap" type="cn.kanmars.sn.entity.TblSysDic">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="l1_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="l1_desc" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="l2_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="l2_desc" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="code_param" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="code_value" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="code_idx" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="live_count" javaType="java.lang.Integer" jdbcType="DECIMAL" />
+            <arg column="create_time" javaType="java.lang.String" jdbcType="CHAR" />
+            <arg column="up_time" javaType="java.lang.String" jdbcType="CHAR" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,l1_code,l1_desc,l2_code,l2_desc,code_param,code_value,code_idx,live_count,create_time,up_time
+    </sql>
+    <select id="select" parameterType="cn.kanmars.sn.entity.TblSysDic" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_dic
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="l1Code != null and l1Code != '' ">
+            and l1_code = #{l1Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l1Desc != null and l1Desc != '' ">
+            and l1_desc = #{l1Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Code != null and l2Code != '' ">
+            and l2_code = #{l2Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Desc != null and l2Desc != '' ">
+            and l2_desc = #{l2Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="codeParam != null and codeParam != '' ">
+            and code_param = #{codeParam,jdbcType=VARCHAR}
+        </if>
+        <if test="codeValue != null and codeValue != '' ">
+            and code_value = #{codeValue,jdbcType=VARCHAR}
+        </if>
+        <if test="codeIdx != null and codeIdx != '' ">
+            and code_idx = #{codeIdx,jdbcType=DECIMAL}
+        </if>
+        <if test="liveCount != null and liveCount != '' ">
+            and live_count = #{liveCount,jdbcType=DECIMAL}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="selectList" parameterType="cn.kanmars.sn.entity.TblSysDic" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_dic
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="l1Code != null and l1Code != '' ">
+            and l1_code = #{l1Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l1Desc != null and l1Desc != '' ">
+            and l1_desc = #{l1Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Code != null and l2Code != '' ">
+            and l2_code = #{l2Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Desc != null and l2Desc != '' ">
+            and l2_desc = #{l2Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="codeParam != null and codeParam != '' ">
+            and code_param = #{codeParam,jdbcType=VARCHAR}
+        </if>
+        <if test="codeValue != null and codeValue != '' ">
+            and code_value = #{codeValue,jdbcType=VARCHAR}
+        </if>
+        <if test="codeIdx != null and codeIdx != '' ">
+            and code_idx = #{codeIdx,jdbcType=DECIMAL}
+        </if>
+        <if test="liveCount != null and liveCount != '' ">
+            and live_count = #{liveCount,jdbcType=DECIMAL}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <insert id="insert" parameterType="cn.kanmars.sn.entity.TblSysDic" >
+        insert into tbl_sys_dic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                id,
+            </if>
+            <if test="l1Code != null ">
+                l1_code,
+            </if>
+            <if test="l1Desc != null ">
+                l1_desc,
+            </if>
+            <if test="l2Code != null ">
+                l2_code,
+            </if>
+            <if test="l2Desc != null ">
+                l2_desc,
+            </if>
+            <if test="codeParam != null ">
+                code_param,
+            </if>
+            <if test="codeValue != null ">
+                code_value,
+            </if>
+            <if test="codeIdx != null ">
+                code_idx,
+            </if>
+            <if test="liveCount != null ">
+                live_count,
+            </if>
+            <if test="createTime != null ">
+                create_time,
+            </if>
+            <if test="upTime != null ">
+                up_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null ">
+                #{id,jdbcType=DECIMAL},
+            </if>
+            <if test="l1Code != null ">
+                #{l1Code,jdbcType=VARCHAR},
+            </if>
+            <if test="l1Desc != null ">
+                #{l1Desc,jdbcType=VARCHAR},
+            </if>
+            <if test="l2Code != null ">
+                #{l2Code,jdbcType=VARCHAR},
+            </if>
+            <if test="l2Desc != null ">
+                #{l2Desc,jdbcType=VARCHAR},
+            </if>
+            <if test="codeParam != null ">
+                #{codeParam,jdbcType=VARCHAR},
+            </if>
+            <if test="codeValue != null ">
+                #{codeValue,jdbcType=VARCHAR},
+            </if>
+            <if test="codeIdx != null ">
+                #{codeIdx,jdbcType=DECIMAL},
+            </if>
+            <if test="liveCount != null ">
+                #{liveCount,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null ">
+                #{createTime,jdbcType=CHAR},
+            </if>
+            <if test="upTime != null ">
+                #{upTime,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.kanmars.sn.entity.TblSysDic" >
+        update tbl_sys_dic
+        <set>
+            <if test="l1Code != null">
+                l1_code = #{l1Code,jdbcType=VARCHAR} ,
+            </if>
+            <if test="l1Desc != null">
+                l1_desc = #{l1Desc,jdbcType=VARCHAR} ,
+            </if>
+            <if test="l2Code != null">
+                l2_code = #{l2Code,jdbcType=VARCHAR} ,
+            </if>
+            <if test="l2Desc != null">
+                l2_desc = #{l2Desc,jdbcType=VARCHAR} ,
+            </if>
+            <if test="codeParam != null">
+                code_param = #{codeParam,jdbcType=VARCHAR} ,
+            </if>
+            <if test="codeValue != null">
+                code_value = #{codeValue,jdbcType=VARCHAR} ,
+            </if>
+            <if test="codeIdx != null">
+                code_idx = #{codeIdx,jdbcType=DECIMAL} ,
+            </if>
+            <if test="liveCount != null">
+                live_count = #{liveCount,jdbcType=DECIMAL} ,
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime != null">
+                up_time = #{upTime,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            and id = #{id,jdbcType=DECIMAL}
+    </update>
+    <delete id="delete" parameterType="cn.kanmars.sn.entity.TblSysDic" >
+        delete from tbl_sys_dic
+        where 1=1
+            <if test="id != null and id != '' ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="l1Code != null and l1Code != '' ">
+                and l1_code = #{l1Code,jdbcType=VARCHAR}
+            </if>
+            <if test="l1Desc != null and l1Desc != '' ">
+                and l1_desc = #{l1Desc,jdbcType=VARCHAR}
+            </if>
+            <if test="l2Code != null and l2Code != '' ">
+                and l2_code = #{l2Code,jdbcType=VARCHAR}
+            </if>
+            <if test="l2Desc != null and l2Desc != '' ">
+                and l2_desc = #{l2Desc,jdbcType=VARCHAR}
+            </if>
+            <if test="codeParam != null and codeParam != '' ">
+                and code_param = #{codeParam,jdbcType=VARCHAR}
+            </if>
+            <if test="codeValue != null and codeValue != '' ">
+                and code_value = #{codeValue,jdbcType=VARCHAR}
+            </if>
+            <if test="codeIdx != null and codeIdx != '' ">
+                and code_idx = #{codeIdx,jdbcType=DECIMAL}
+            </if>
+            <if test="liveCount != null and liveCount != '' ">
+                and live_count = #{liveCount,jdbcType=DECIMAL}
+            </if>
+            <if test="createTime != null and createTime != '' ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null and upTime != '' ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </delete>
+    <select id="queryOneMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_dic
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="l1Code != null and l1Code != '' ">
+            and l1_code = #{l1Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l1Desc != null and l1Desc != '' ">
+            and l1_desc = #{l1Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Code != null and l2Code != '' ">
+            and l2_code = #{l2Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Desc != null and l2Desc != '' ">
+            and l2_desc = #{l2Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="codeParam != null and codeParam != '' ">
+            and code_param = #{codeParam,jdbcType=VARCHAR}
+        </if>
+        <if test="codeValue != null and codeValue != '' ">
+            and code_value = #{codeValue,jdbcType=VARCHAR}
+        </if>
+        <if test="codeIdx != null and codeIdx != '' ">
+            and code_idx = #{codeIdx,jdbcType=DECIMAL}
+        </if>
+        <if test="liveCount != null and liveCount != '' ">
+            and live_count = #{liveCount,jdbcType=DECIMAL}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <select id="queryListMap" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_dic
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="l1Code != null and l1Code != '' ">
+            and l1_code = #{l1Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l1Desc != null and l1Desc != '' ">
+            and l1_desc = #{l1Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Code != null and l2Code != '' ">
+            and l2_code = #{l2Code,jdbcType=VARCHAR}
+        </if>
+        <if test="l2Desc != null and l2Desc != '' ">
+            and l2_desc = #{l2Desc,jdbcType=VARCHAR}
+        </if>
+        <if test="codeParam != null and codeParam != '' ">
+            and code_param = #{codeParam,jdbcType=VARCHAR}
+        </if>
+        <if test="codeValue != null and codeValue != '' ">
+            and code_value = #{codeValue,jdbcType=VARCHAR}
+        </if>
+        <if test="codeIdx != null and codeIdx != '' ">
+            and code_idx = #{codeIdx,jdbcType=DECIMAL}
+        </if>
+        <if test="liveCount != null and liveCount != '' ">
+            and live_count = #{liveCount,jdbcType=DECIMAL}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+    </select>
+    <update id="updateCAS" parameterType="java.util.HashMap" >
+        update tbl_sys_dic
+        <set>
+            <if test="l1Code_new != null">
+                l1_code = #{l1Code_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="l1Desc_new != null">
+                l1_desc = #{l1Desc_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="l2Code_new != null">
+                l2_code = #{l2Code_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="l2Desc_new != null">
+                l2_desc = #{l2Desc_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="codeParam_new != null">
+                code_param = #{codeParam_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="codeValue_new != null">
+                code_value = #{codeValue_new,jdbcType=VARCHAR} ,
+            </if>
+            <if test="codeIdx_new != null">
+                code_idx = #{codeIdx_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="liveCount_new != null">
+                live_count = #{liveCount_new,jdbcType=DECIMAL} ,
+            </if>
+            <if test="createTime_new != null">
+                create_time = #{createTime_new,jdbcType=CHAR} ,
+            </if>
+            <if test="upTime_new != null">
+                up_time = #{upTime_new,jdbcType=CHAR} ,
+            </if>
+        </set>
+        where 1=1
+            <if test="id != null ">
+                and id = #{id,jdbcType=DECIMAL}
+            </if>
+            <if test="l1Code != null ">
+                and l1_code = #{l1Code,jdbcType=VARCHAR}
+            </if>
+            <if test="l1Desc != null ">
+                and l1_desc = #{l1Desc,jdbcType=VARCHAR}
+            </if>
+            <if test="l2Code != null ">
+                and l2_code = #{l2Code,jdbcType=VARCHAR}
+            </if>
+            <if test="l2Desc != null ">
+                and l2_desc = #{l2Desc,jdbcType=VARCHAR}
+            </if>
+            <if test="codeParam != null ">
+                and code_param = #{codeParam,jdbcType=VARCHAR}
+            </if>
+            <if test="codeValue != null ">
+                and code_value = #{codeValue,jdbcType=VARCHAR}
+            </if>
+            <if test="codeIdx != null ">
+                and code_idx = #{codeIdx,jdbcType=DECIMAL}
+            </if>
+            <if test="liveCount != null ">
+                and live_count = #{liveCount,jdbcType=DECIMAL}
+            </if>
+            <if test="createTime != null ">
+                and create_time = #{createTime,jdbcType=CHAR}
+            </if>
+            <if test="upTime != null ">
+                and up_time = #{upTime,jdbcType=CHAR}
+            </if>
+    </update>
+    <select id="queryForPage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        select count(1) as TOTALCOUNT from (
+        </if>
+
+
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_dic
+        where 1=1
+        <if test="id != null and id != '' ">
+            and id = #{id,jdbcType=DECIMAL}
+        </if>
+        <if test="l1Code != null and l1Code != '' ">
+            and l1_code like CONCAT(#{l1Code,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="l1Desc != null and l1Desc != '' ">
+            and l1_desc like CONCAT(#{l1Desc,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="l2Code != null and l2Code != '' ">
+            and l2_code like CONCAT(#{l2Code,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="l2Desc != null and l2Desc != '' ">
+            and l2_desc like CONCAT(#{l2Desc,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="codeParam != null and codeParam != '' ">
+            and code_param like CONCAT(#{codeParam,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="codeValue != null and codeValue != '' ">
+            and code_value like CONCAT(#{codeValue,jdbcType=VARCHAR},'%')
+        </if>
+        <if test="codeIdx != null and codeIdx != '' ">
+            and code_idx = #{codeIdx,jdbcType=DECIMAL}
+        </if>
+        <if test="liveCount != null and liveCount != '' ">
+            and live_count = #{liveCount,jdbcType=DECIMAL}
+        </if>
+        <if test="createTime != null and createTime != '' ">
+            and create_time = #{createTime,jdbcType=CHAR}
+        </if>
+        <if test="upTime != null and upTime != '' ">
+            and up_time = #{upTime,jdbcType=CHAR}
+        </if>
+
+
+        <if test="countFlag != null and countFlag == 'N'.toString() ">
+        limit #{limitStart,jdbcType=DECIMAL},#{limitSize,jdbcType=DECIMAL}
+        </if>
+        <if test="countFlag != null and countFlag == 'Y'.toString() ">
+        ) as TMP_COUNT_TABLE
+        </if>
+    </select>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+        ORACLE的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                insert into test (a,b,c) values (#{item.a},#{item.b},#{item.c})
+            </foreach>
+        </insert>
+        MYSQL的写法
+        <insert id="insertBatch"  parameterType="java.util.List">
+            insert into test (a,b,c) values 
+            <foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+                #{item.a},#{item.b},#{item.c}
+            </foreach>
+        </insert>
+        
+        
+    -->
+    <insert id="insertBatch"  parameterType="java.util.List">
+        insert into tbl_sys_dic (id,l1_code,l1_desc,l2_code,l2_desc,code_param,code_value,code_idx,live_count,create_time,up_time) values 
+        <foreach collection="list" item="item" index="index" open="(" close=")" separator="),(">
+            #{item.id},#{item.l1Code},#{item.l1Desc},#{item.l2Code},#{item.l2Desc},#{item.codeParam},#{item.codeValue},#{item.codeIdx},#{item.liveCount},#{item.createTime},#{item.upTime}
+        </foreach>
+    </insert>
+    <!-- 如果是mysql数据库，需要在jdbcUrl中设置allowMultiQueries=true参数才可以使用 -->
+    <!-- 返回值为第一条更新语句的执行结果，并非所有批量更新的语句总和 -->
+    <!--
+         ORACLE的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="begin" close="end;" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         MYSQL的写法
+         <update id="updateBatch"  parameterType="java.util.List">
+             <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+                 update test
+                 <set>
+                     test=${item.test}+1
+                 </set>
+                 where id = ${item.id}
+             </foreach>
+         </update>
+         
+         
+    -->
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update tbl_sys_dic
+            <set>
+                <if test="item.l1Code_new != null">
+                    l1_code = #{item.l1Code_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.l1Desc_new != null">
+                    l1_desc = #{item.l1Desc_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.l2Code_new != null">
+                    l2_code = #{item.l2Code_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.l2Desc_new != null">
+                    l2_desc = #{item.l2Desc_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.codeParam_new != null">
+                    code_param = #{item.codeParam_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.codeValue_new != null">
+                    code_value = #{item.codeValue_new,jdbcType=VARCHAR} ,
+                </if>
+                <if test="item.codeIdx_new != null">
+                    code_idx = #{item.codeIdx_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.liveCount_new != null">
+                    live_count = #{item.liveCount_new,jdbcType=DECIMAL} ,
+                </if>
+                <if test="item.createTime_new != null">
+                    create_time = #{item.createTime_new,jdbcType=CHAR} ,
+                </if>
+                <if test="item.upTime_new != null">
+                    up_time = #{item.upTime_new,jdbcType=CHAR} ,
+                </if>
+            </set>
+            where 1=1
+                <if test="item.id != null ">
+                    and id = #{item.id,jdbcType=DECIMAL}
+                </if>
+                <if test="item.l1Code != null ">
+                    and l1_code = #{item.l1Code,jdbcType=VARCHAR}
+                </if>
+                <if test="item.l1Desc != null ">
+                    and l1_desc = #{item.l1Desc,jdbcType=VARCHAR}
+                </if>
+                <if test="item.l2Code != null ">
+                    and l2_code = #{item.l2Code,jdbcType=VARCHAR}
+                </if>
+                <if test="item.l2Desc != null ">
+                    and l2_desc = #{item.l2Desc,jdbcType=VARCHAR}
+                </if>
+                <if test="item.codeParam != null ">
+                    and code_param = #{item.codeParam,jdbcType=VARCHAR}
+                </if>
+                <if test="item.codeValue != null ">
+                    and code_value = #{item.codeValue,jdbcType=VARCHAR}
+                </if>
+                <if test="item.codeIdx != null ">
+                    and code_idx = #{item.codeIdx,jdbcType=DECIMAL}
+                </if>
+                <if test="item.liveCount != null ">
+                    and live_count = #{item.liveCount,jdbcType=DECIMAL}
+                </if>
+                <if test="item.createTime != null ">
+                    and create_time = #{item.createTime,jdbcType=CHAR}
+                </if>
+                <if test="item.upTime != null ">
+                    and up_time = #{item.upTime,jdbcType=CHAR}
+                </if>
+        </foreach>
+    </update>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tbl_sys_dic
+        where 1=1
+        and id = #{0}
+    </select>
+    <update id="editInfo" parameterType="java.util.HashMap">
+    </update>
+
+</mapper>
+

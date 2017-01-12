@@ -11,3 +11,5 @@
 .modal-dialog{margin:165px auto;}
 
 .addNewData{width:50px;margin:10px 0px;}
+
+textarea.form-control{height:200px;}

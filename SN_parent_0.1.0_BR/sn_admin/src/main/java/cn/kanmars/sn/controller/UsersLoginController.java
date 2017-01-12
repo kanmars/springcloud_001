@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.com.xcommon.common.security.aes.AESUtil;
 import cn.com.xcommon.frame.controller.AjaxBaseController;
+import cn.com.xcommon.frame.interceptor.UserLoginBean;
 import cn.com.xcommon.frame.logger.HLogger;
 import cn.com.xcommon.frame.logger.LoggerManager;
-import cn.kanmars.sn.base.AdvancedUserLoginBean;
 import cn.kanmars.sn.entity.TblSysConfig;
 import cn.kanmars.sn.entity.TblSysmenuInfo;
 import cn.kanmars.sn.entity.TblSysuserInfo;
@@ -158,13 +158,14 @@ public class UsersLoginController extends AjaxBaseController {
 
 			tblSysuserInfo.setLoginName(userAccount);
 
-			AdvancedUserLoginBean userLoginBean = new AdvancedUserLoginBean(tblSysuserInfo.getUserNo(),tblSysuserInfo.getLoginName(),tblSysuserInfo.getUserNickname(),tblSysuserInfo.getUserName(),null);
+			UserLoginBean userLoginBean = new UserLoginBean(tblSysuserInfo.getUserNo(),tblSysuserInfo.getLoginName(),tblSysuserInfo.getUserNickname(),tblSysuserInfo.getUserName(),null,new HashMap<String, String>());
+
 			userLoginBean = queryAdvancedUserLoginBean(userLoginBean);
 			request.getSession().setAttribute("menuList", userLoginBean.getMenulist());
 			//把登录用户的信息设置到cookie中和session中
 			request.getSession().setAttribute("user", userLoginBean);
 			//添加到cookie时，menulist并不会添加到cookie中
-			AdvancedUserLoginBean.CookiesUtils.addCookie(userLoginBean, response);
+			UserLoginBean.CookiesUtils.addCookie(userLoginBean, response);
 			String goUrl = request.getParameter("goUrl");
 			if(StringUtils.isNotEmpty(goUrl)){
 				return "redirect:" + goUrl;
@@ -191,7 +192,10 @@ public class UsersLoginController extends AjaxBaseController {
 	 */
 	@RequestMapping("/main.dhtml")
 	public String mainPage(Model model,HttpServletRequest request, HttpServletResponse response){
-		
+		String systemName = getSystemName();
+		String imgUrl = getImageUrl();
+		model.addAttribute("systemName", systemName);
+		model.addAttribute("imgUrl", imgUrl);
 		return "template";
 	}
 
@@ -227,7 +231,7 @@ public class UsersLoginController extends AjaxBaseController {
 
 	@RequestMapping("/logout.dhtml")
 	public String logout(Model model,HttpServletRequest request, HttpServletResponse response) {
-		AdvancedUserLoginBean.CookiesUtils.delCookie(request, response);
+		UserLoginBean.CookiesUtils.delCookie(request, response);
 		request.getSession().removeAttribute("userInfo");
 		return "redirect:/login/login.dhtml";
 	}
@@ -236,7 +240,7 @@ public class UsersLoginController extends AjaxBaseController {
 	public void isLogin(Model model,HttpServletRequest request, HttpServletResponse response) {
 		HashMap paramMap = new HashMap();
 		String result = "false";
-		AdvancedUserLoginBean bean = AdvancedUserLoginBean.CookiesUtils.getCookie(request,response);
+		UserLoginBean bean = UserLoginBean.CookiesUtils.getCookie(request,response);
 		try {
 			if(bean!=null){
 				result="true";
@@ -281,7 +285,7 @@ public class UsersLoginController extends AjaxBaseController {
 	 * @param a
 	 * @return
 	 */
-	public AdvancedUserLoginBean queryAdvancedUserLoginBean(AdvancedUserLoginBean a){
+	public UserLoginBean queryAdvancedUserLoginBean(UserLoginBean a){
 		try{
 			List<TblSysmenuInfo> menuList = menuInfoLogic.queryUserMenu(a.getUserId());
 			List<Map> arrayList = new ArrayList<Map>();

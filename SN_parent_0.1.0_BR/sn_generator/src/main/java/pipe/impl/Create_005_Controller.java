@@ -55,6 +55,7 @@ public class Create_005_Controller implements Pipe {
         sb.append("import cn.com.xcommon.frame.util.MoneyFormatUtils;").append("\r\n");
         sb.append("import cn.com.xcommon.frame.util.StringUtils;").append("\r\n");
         sb.append("import cn.com.xcommon.frame.util.DateUtils;").append("\r\n");
+        sb.append("import cn.com.xcommon.frame.interceptor.OperationLogDescription;").append("\r\n");
         sb.append("import cn.kanmars.sn.util.SysSequenceUtils;").append("\r\n");
         sb.append("import cn.kanmars.sn.util.SysDicUtils;").append("\r\n");
         sb.append("import cn.kanmars.sn.base.AdvancedAjaxBaseController;").append("\r\n");
@@ -184,6 +185,7 @@ public class Create_005_Controller implements Pipe {
         //insert方法
         //************************************************************************************************************
         sb.append("    @RequestMapping(\"/insert.dhtml\")").append("\r\n");
+        sb.append("    @OperationLogDescription(operationName=\"插入\",operationApp = \"sn-admin\")").append("\r\n");
         sb.append("    public void insert(HttpServletRequest request, HttpServletResponse response) {").append("\r\n");
         sb.append("        logger.info(\"insert:start\");").append("\r\n");
         sb.append("        String requestJson = request.getParameter(\"jsonStr\");").append("\r\n");
@@ -312,6 +314,7 @@ public class Create_005_Controller implements Pipe {
         //edit方法
         //************************************************************************************************************
         sb.append("    @RequestMapping(\"/edit.dhtml\")").append("\r\n");
+        sb.append("    @OperationLogDescription(operationName=\"修改\",operationApp = \"sn-admin\")").append("\r\n");
         sb.append("    public void edit(HttpServletRequest request, HttpServletResponse response) {").append("\r\n");
         sb.append("        logger.info(\"edit:start\");").append("\r\n");
         sb.append("        String requestJson = request.getParameter(\"jsonStr\");").append("\r\n");
@@ -423,6 +426,7 @@ public class Create_005_Controller implements Pipe {
         //delete方法
         //************************************************************************************************************
         sb.append("    @RequestMapping(\"/del.dhtml\")").append("\r\n");
+        sb.append("    @OperationLogDescription(operationName=\"删除\",operationApp = \"sn-admin\")").append("\r\n");
         sb.append("    public void del(HttpServletRequest request, HttpServletResponse response) {").append("\r\n");
         sb.append("        logger.info(\"del:start\");").append("\r\n");
         sb.append("        String requestJson = request.getParameter(\"jsonStr\");").append("\r\n");

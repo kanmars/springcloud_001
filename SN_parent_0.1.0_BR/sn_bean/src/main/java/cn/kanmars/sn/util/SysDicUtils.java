@@ -40,6 +40,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
         alter table tbl_sys_dic comment '系统字典表';
  *
+ * 使用场景：有数据库访问，需要数据字典的系统，例如sn-admin,sn-service,sn-task等，严禁sn-web和sn-zuul使用
  */
 public class SysDicUtils implements ApplicationContextAware {
 

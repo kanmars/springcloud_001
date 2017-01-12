@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="true">
+	<!-- 全局配置 -->
+	<loggerConfiger>
+		<properties>
+			<!-- 是否打印日志 -->
+			<propertie name="log.env">${env}</propertie>
+			<!-- 是否打印日志 -->
+			<propertie name="log.flag">true</propertie>
+			<!-- 日志级别 -->
+			<propertie name="log.level">debug</propertie>
+			<!-- 日志格式
+				%m(message):输出的日志消息，如ILog.Debug(…)输出的一条消息
+				%n(new line)：換行
+				%d(datetime):输出当前语句运行的时刻
+				%r(run time):输出程序从运行到执行到当前语句时消耗的毫秒数
+				%t(thread id):当前语句所在的线程ID
+				%p(priority): 日志的当前优先级别，即DEBUG、INFO、WARN…等
+				%c(class):当前日志对象的名称
+				%L：输出语句所在的行号
+				%F：输出语句所在的文件名
+				%-数字：表示该项的最小长度，如果不够，则用空格填充
+			-->
+			<propertie name="log.logout.conversionpattern"><![CDATA[[%T][%P][%d{yyyyMMdd HHmmss,SSS}][%f{25}:%N] %m%n]]></propertie>
+			<!-- 日志ID长度 -->
+			<propertie name="log.id.length">10</propertie>
+			<!-- 单个日志文件大小 -->
+			<propertie name="log.file.size">100MB</propertie>
+			<!-- 日志文件数量 -->
+			<propertie name="log.file.count">100</propertie>
+			<!-- 日志文件路径 -->
+			<propertie name="log.dir">logs</propertie>
+			<!-- 日志文件路径是否要加日期 -->
+			<propertie name="log.dir.date.flag">true</propertie>
+			<!-- 子路径 -->
+			<propertie name="txn.log.dir.sub">txn</propertie>
+			<!-- 异常日志文件名称 -->
+			<propertie name="error.log.file.name">sn_admin.error.log</propertie>
+			<!-- 全日志文件名称 -->
+			<propertie name="all.log.file.name">sn_admin.all.log</propertie>
+			<!-- 是否屏幕输出 -->
+			<propertie name="Stdout.Log.Flag">true</propertie>
+		</properties>
+	</loggerConfiger>
+	
+	
+	<appender name="STD_OUT_FILE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
+	</appender>
+	
+	<appender name="TXN_LOG_FILE" class="cn.com.xcommon.frame.logger.HRollingFileAppender">
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
+	</appender>
+
+	<appender name="ERROR_LOG_FILE" class="cn.com.xcommon.frame.logger.HRollingFileAppender">
+		<param name="File" value="default" />
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+	
+	<appender name="ALL_LOG_FILE" class="cn.com.xcommon.frame.logger.HRollingFileAppender">
+		<param name="File" value="default" />
+		<layout class="cn.com.xcommon.frame.logger.ExPatternLayout"/>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+		</filter>
+	</appender>
+	
+	<logger name="STD_OUT_LOGER">
+		<appender-ref ref="STD_OUT_FILE" />
+	</logger>
+	
+	<logger name="TXN_LOG_LOGER">
+		<appender-ref ref="TXN_LOG_FILE" />
+	</logger>
+	
+	<logger name="ERROR_LOG_LOGER">
+		<appender-ref ref="ERROR_LOG_FILE" />
+	</logger>
+	
+	<logger name="ALL_LOG_LOGER">
+		<appender-ref ref="ALL_LOG_FILE" />
+	</logger> 
+
+	 <root>
+		<level value="DEBUG" />
+		<appender-ref ref="STD_OUT_FILE" />
+		<appender-ref ref="ERROR_LOG_FILE" />
+		<appender-ref ref="ALL_LOG_FILE" />
+	</root>
+	
+</log4j:configuration>

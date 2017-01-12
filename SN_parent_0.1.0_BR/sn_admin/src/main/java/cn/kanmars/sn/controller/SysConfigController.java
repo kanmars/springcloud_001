@@ -4,15 +4,13 @@
 package cn.kanmars.sn.controller;
 
 
+import cn.com.xcommon.frame.interceptor.OperationLogDescription;
 import cn.com.xcommon.frame.logger.HLogger;
 import cn.com.xcommon.frame.logger.LoggerManager;
-import cn.com.xcommon.frame.util.DateFormatUtils;
 import cn.com.xcommon.frame.util.MapObjTransUtils;
-import cn.com.xcommon.frame.util.MoneyFormatUtils;
 import cn.com.xcommon.frame.util.StringUtils;
 import cn.com.xcommon.frame.util.DateUtils;
 import cn.kanmars.sn.util.SysSequenceUtils;
-import cn.kanmars.sn.util.SysDicUtils;
 import cn.kanmars.sn.base.AdvancedAjaxBaseController;
 import cn.kanmars.sn.logic.SysConfigLogic;
 import cn.kanmars.sn.entity.TblSysConfig;
@@ -26,11 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.math.BigDecimal;
 
 
 /**
@@ -91,6 +87,7 @@ public class SysConfigController extends AdvancedAjaxBaseController  {
     }
 
     @RequestMapping("/insert.dhtml")
+    @OperationLogDescription(operationName="插入",operationApp = "sn-admin")
     public void insert(HttpServletRequest request, HttpServletResponse response) {
         logger.info("insert:start");
         String requestJson = request.getParameter("jsonStr");
@@ -125,6 +122,7 @@ public class SysConfigController extends AdvancedAjaxBaseController  {
     }
 
     @RequestMapping("/edit.dhtml")
+    @OperationLogDescription(operationName="修改",operationApp = "sn-admin")
     public void edit(HttpServletRequest request, HttpServletResponse response) {
         logger.info("edit:start");
         String requestJson = request.getParameter("jsonStr");
@@ -162,6 +160,7 @@ public class SysConfigController extends AdvancedAjaxBaseController  {
     }
 
     @RequestMapping("/del.dhtml")
+    @OperationLogDescription(operationName="删除",operationApp = "sn-admin")
     public void del(HttpServletRequest request, HttpServletResponse response) {
         logger.info("del:start");
         String requestJson = request.getParameter("jsonStr");
